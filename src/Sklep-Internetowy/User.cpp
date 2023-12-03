@@ -1,19 +1,25 @@
-
 #include "User.h"
 #include <iostream>
 
-
 using namespace std;
 
+int User::usersCount = 0;
 void User::say() {
-	cout << "Hello, " << name << " " << surname;
+	cout << "Hello, " << username;
 }
 
-User::User(string imie, string nazwisko) {
-	this->name = imie;
-	this->surname = nazwisko;
+User::User(string username, string password) : username(username), password(password) {
+	usersCount++;
 }
 
-string User::getName() { return this->name; }
+void User::displayInfo() {
+	std::cout << "Username: " << username << std::endl;
+}
 
-string User::getSurname() { return this->name; }
+int User::getTotalUsers() {
+	return usersCount;
+}
+
+
+
+
