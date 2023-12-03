@@ -1,19 +1,24 @@
-#pragma once
+#ifndef USER_H
+#define USER_H
+
 #include <iostream>
 using namespace std;
 
 class User {
-private:
-	string name;
-	string surname;
+protected:
+	static int usersCount;
+	string username;
+	string password;
 
 public:
-	void say();
-
+	virtual void say();
+	virtual ~User() = default;
 	User(string name, string surname);
+	virtual string getUserName() { return this->username; }
+	virtual void displayInfo();
+	static int getTotalUsers();
 
-	void setName(string name);
-	string getName();
-	void setSurname(string name);
-	string getSurname();
+
+
 };
+#endif // USER_H
