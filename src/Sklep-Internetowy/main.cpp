@@ -5,6 +5,7 @@
 #include "Order.h"
 #include "Store.h"
 #include "Product.h"
+#include "Consumer.h"
 
 using namespace std;
 

@@ -1,1 +1,2 @@
 C:\Users\user\Desktop\Sklep-int\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+D:\docs\Sklep-Internetowy-main\sc\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe

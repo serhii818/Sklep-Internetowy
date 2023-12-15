@@ -1,4 +1,8 @@
-﻿  main.cpp
-  User.cpp
-  Создание кода...
-  Sklep-Internetowy.vcxproj -> C:\Users\user\Desktop\Sklep-int\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+﻿  Cart.cpp
+  Consumer.cpp
+  Order.cpp
+  Product.cpp
+  Store.cpp
+  main.cpp
+  Generating Code...
+  Sklep-Internetowy.vcxproj -> D:\docs\Sklep-Internetowy-main\sc\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe

@@ -2,6 +2,9 @@
 #define CONSUMER_H
 
 #include "User.h"
+#include "Payment.h"
+#include "Cart.h"
+#include "Order.h"
 
 
 class Consumer : public User {
