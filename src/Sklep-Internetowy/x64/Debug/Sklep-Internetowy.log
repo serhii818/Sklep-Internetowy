@@ -1,2 +1,3 @@
-﻿  Clothes.cpp
+﻿  main.cpp
+C:\Users\user\Desktop\projectc++\src\Sklep-Internetowy\main.cpp(73,33): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
   Sklep-Internetowy.vcxproj -> C:\Users\user\Desktop\projectc++\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
