@@ -1,9 +1,7 @@
 #include "Consumer.h"
 
-
-
-Consumer::Consumer(string username, string password, string address, int phone, string email, Payment::CreditCard payment) : User(username, password), address(address),
-    phone(phone), email(email), payment(payment) {}
+Consumer::Consumer(string username, string password, string address, int phone, string email)
+    : User(username, password), address(address), phone(phone), email(email) {}
 
 void Consumer::displayInfo() 
 {
@@ -19,10 +17,9 @@ void Consumer::displayInfo()
 void Consumer::makePurchase(Cart cart)
 {
     double totalAmount = cart.calculateTotalPrice();
-    Order newOrder(/*this, */cart, payment);
-    orders.push_back(newOrder);
-    cout << "\nMade a purchase\n";
-   
+    //Admin::orders.push_back(newOrder);
+    cout << "\nMade a purchase for a " + (int)totalAmount << endl;;
+    Consumer::creditCard.makePayment();
 }
 
 

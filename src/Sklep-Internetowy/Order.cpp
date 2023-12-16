@@ -1,24 +1,22 @@
 #include "Order.h"
 #include <iostream>
+#include "Consumer.h"
 
-//using namespace std;
 
-Order::Order(/*Consumer* consumer, */Cart cart, Payment::CreditCard payment)
-    : /*consumer(consumer), */payment(payment) {
+Order::Order(Consumer* consumer, Cart cart)
+{
     for (Product item : cart.getItems()) {
         products.push_back(item);
     }
+    this->consumer = consumer;
 }
 
 void Order::displayOrderDetails() {
     cout << "Order Details:\n";
-    //consumer.displayInfo();
-    cout << "Products in the order:\n";
-    for (Product product : products) {
-        product.displayInfo();
+    std::cout << "Consumer Information:\n";
+    consumer->displayInfo();
+    cout << "Products:\n";
+    for (Product& prod : products) {
+        prod.displayInfo();
     }
-    payment.showPayment();
-
-
-  
 }

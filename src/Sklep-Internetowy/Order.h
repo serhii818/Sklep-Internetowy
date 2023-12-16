@@ -1,23 +1,25 @@
 #ifndef ORDER_H
 #define ORDER_H
+#pragma once
 
 #include <vector>
 #include "Product.h"
-#include "Payment.h"
 #include "Cart.h"
+#include "Consumer.h"
 
 using namespace std;
+class Consumer;
 
 class Order {
 public:
-    Order(/*Consumer* consumer, */Cart cart, Payment::CreditCard payment);
+    Order(Consumer* consumer, Cart cart);
 
     void displayOrderDetails();
 
 private:
-    //Consumer consumer;
+    Consumer* consumer;
     vector<Product> products;
-    Payment::CreditCard payment;
+    
 };
 
 #endif 
