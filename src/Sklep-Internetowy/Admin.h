@@ -14,5 +14,6 @@ public:
     Admin(string username, string password, string email);
     static void addOrder(Order& order);
     static void displayOrders();
+    static void sortOrders();
 };
 
