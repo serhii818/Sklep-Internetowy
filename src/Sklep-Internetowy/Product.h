@@ -13,11 +13,13 @@ private:
 	double discount;
 public:
 	Product(string name, double price, double discount = 0.0);
-
+	Product();
 	virtual void displayInfo() = 0;
 	double getPrice(); 
 	double getDiscount(); 
 	string getName();
+	friend std::ostream& operator<<(std::ostream& os, const Product& product);
+	friend std::istream& operator>>(std::istream& is, Product& product);
 };
 
 
