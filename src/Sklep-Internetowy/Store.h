@@ -7,11 +7,11 @@
 class Store
 {
 private:
-	vector<Product> products;
+	vector<Product*> products;
 	static int productCount;
 
 public:
-	void addProduct(Product product);
+	void addProduct(Product* product);
 	void displayProducts();
 	static int getTotalProducts();
 

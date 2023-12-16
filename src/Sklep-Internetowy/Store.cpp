@@ -2,15 +2,15 @@
 
 int Store::productCount = 0;
 
-void Store::addProduct( Product product) {
+void Store::addProduct(Product* product) {
     products.push_back(product);
     productCount++;
 }
 
 void Store::displayProducts() {
     std::cout << "Products in the store:\n";
-    for (Product product : products) {
-        product.displayInfo();
+    for (Product* product : products) {
+        product->displayInfo();
     }
 }
 

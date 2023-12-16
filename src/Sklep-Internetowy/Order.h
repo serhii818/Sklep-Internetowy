@@ -7,8 +7,9 @@
 #include "Cart.h"
 #include "Consumer.h"
 
-using namespace std;
 class Consumer;
+class Product;
+class Cart;
 
 class Order {
 public:
@@ -18,7 +19,7 @@ public:
 
 private:
     Consumer* consumer;
-    vector<Product> products;
+    vector<Product*> products;
     
 };
 

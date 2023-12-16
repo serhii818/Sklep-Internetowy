@@ -5,6 +5,8 @@
 #include "Store.h"
 #include "Product.h"
 #include "Consumer.h"
+#include "Clothes.h"
+#include "Admin.h"
 
 using namespace std;
 
@@ -20,12 +22,12 @@ int main() {
     consumer1.setExpirationDate(25.02);
     consumer1.setCvv(908);
 
-    Product laptop("Laptop", 2547);
-    Product headphones("Headphones", 55.55, 10);
+    Clothes laptop("Laptop", 2547);
+    Clothes headphones("Headphones", 55.55, 10);
 
     Cart cart1;
-    cart1.addItem(laptop);
-    cart1.addItem(headphones);
+    cart1.addItem(&laptop);
+    cart1.addItem(&headphones);
     consumer1.makePurchase(cart1);
     Order newOrder(&consumer1, cart1);
     newOrder.displayOrderDetails();
