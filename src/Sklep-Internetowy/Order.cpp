@@ -5,7 +5,7 @@
 
 Order::Order(Consumer* consumer, Cart cart)
 {
-    for (Product item : cart.getItems()) {
+    for (Product* item : cart.getItems()) {
         products.push_back(item);
     }
     this->consumer = consumer;
@@ -16,7 +16,7 @@ void Order::displayOrderDetails() {
     std::cout << "Consumer Information:\n";
     consumer->displayInfo();
     cout << "Products:\n";
-    for (Product& prod : products) {
-        prod.displayInfo();
+    for (Product* prod : products) {
+        prod->displayInfo();
     }
 }

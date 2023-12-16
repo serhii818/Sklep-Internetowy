@@ -1,20 +1,19 @@
 #include "Product.h"
 
 
-Product::Product(string name, double price, double discount)
+Product::Product(std::string name, double price, double discount)
     : name(name), price(price), discount(discount) {}
 
-void Product::displayInfo() {
-    cout << "Product: " << name << "\n Price: " << price << "$" << \
-        "\n Dicount: " << discount << "$" << endl;
-}
-
-double Product::getPrice() const {
+double Product::getPrice() {
     return price;
 }
 
-double Product::getDiscount() const {
+double Product::getDiscount() {
     return discount;
+}
+
+string Product::getName() {
+    return name;
 }
 
 

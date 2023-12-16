@@ -1,5 +1,6 @@
 #include "Admin.h"
 
+
 vector<Order> Admin::orders;
 void Admin::addOrder(Order& order) {
     Admin::orders.push_back(order);
@@ -12,6 +13,10 @@ void Admin::displayOrders() {
         cout << "\n";
     }
 }
+Admin::Admin(string username, string password, string email) 
+    : User(username, password), email(email) {}
+
+
 
 
 

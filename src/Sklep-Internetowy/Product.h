@@ -1,8 +1,8 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
+
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 class Product
@@ -14,10 +14,12 @@ private:
 public:
 	Product(string name, double price, double discount = 0.0);
 
-	void displayInfo();
-	double getPrice() const; 
-	double getDiscount() const; 
+	virtual void displayInfo() = 0;
+	double getPrice(); 
+	double getDiscount(); 
+	string getName();
 };
 
 
 #endif PRODUCT_H
+

@@ -6,13 +6,13 @@
 #include "Product.h"
 class Cart {
 public:
-    void addItem(Product product);
+    void addItem(Product* product);
     void displayCart();
     double calculateTotalPrice();
-    vector<Product> getItems();
+    vector<Product*> getItems();
 
 private:
-    std::vector<Product> items;
+    std::vector<Product*> items;
 };
 
 #endif // CART_H
