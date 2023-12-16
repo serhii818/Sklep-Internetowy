@@ -15,8 +15,6 @@ public:
 	Product(string name, double price, double discount = 0.0);
 
 	void displayInfo();
-
-
 	double getPrice() const; 
 	double getDiscount() const; 
 };

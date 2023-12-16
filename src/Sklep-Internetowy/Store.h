@@ -9,6 +9,7 @@ class Store
 private:
 	vector<Product> products;
 	static int productCount;
+
 public:
 	void addProduct(Product product);
 	void displayProducts();

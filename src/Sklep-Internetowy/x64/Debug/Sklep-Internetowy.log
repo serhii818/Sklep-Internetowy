@@ -1,8 +1,7 @@
-﻿  Cart.cpp
+﻿  Admin.cpp
   Consumer.cpp
-  Order.cpp
-  Product.cpp
-  Store.cpp
   main.cpp
-  Generating Code...
-  Sklep-Internetowy.vcxproj -> D:\docs\Sklep-Internetowy-main\sc\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+C:\Users\user\Desktop\projectc++\src\Sklep-Internetowy\main.cpp(20,33): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  Order.cpp
+  Создание кода...
+  Sklep-Internetowy.vcxproj -> C:\Users\user\Desktop\projectc++\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
