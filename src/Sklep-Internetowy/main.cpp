@@ -9,74 +9,9 @@
 #include "Admin.h"
 #include <fstream>
 #include <chrono>
+#include "Vendor.h"
 
 using namespace std;
-
-
-void getDataFromFile(const string& filePath, Clothes& product)
-{
-    // Try - Catch
-    try {
-        ifstream fileIn;
-        fileIn.exceptions(ifstream::badbit | ifstream::failbit);
-
-        fileIn.open(filePath);
-
-        if (!fileIn.is_open())
-        {
-            cout << "Error while trying to open " << filePath << "while reading" << endl;
-        }
-        else
-        {
-            cout << "File " << filePath << " opened!" << endl;
-
-            while (fileIn >> product) {
-                cout << product << endl;
-            }
-            if (fileIn.eof()) {
-                cout << "Reached the end of the file." << endl;
-            }
-            //cart2.addItem(&product);
-            //Order newOrder2(&consumer1, cart2);
-            //newOrder2.displayOrderDetails();
-            //Admin::addOrder(newOrder);
-        }
-        fileIn.close();
-    }
-    catch (const ifstream::failure& e)
-    {
-        cout << "Error!\n" << e.what() << endl;
-        cout << e.code();  
-    }
-   
-}
-
-void writePurchasesToFile(const string& filePath, const Clothes& product)
-{
-    try {
-        ofstream fileOut;
-        fileOut.open(filePath, ofstream::app);
-
-        if (!fileOut.is_open())
-        {
-            cout << "Error while trying to open the file " << filePath << "while writing" << endl;
-        }
-        else
-        {
-            cout << "File " << filePath << " opened!\n";
-            // writing object of the class for example Clothes 
-            fileOut << product << "\n";
-
-        }
-        fileOut.close();
-    }
-    catch (const ofstream::failure& e)
-    {
-        cout << "Error!\n" << e.what() << endl;
-        cout << e.code();
-    }
-}
-
 
 int main() {
 
@@ -103,25 +38,21 @@ int main() {
     Order newOrder(&consumer1, cart1);
     newOrder.displayOrderDetails();
     Admin::addOrder(newOrder);
+    Admin::sortOrders();
     Admin::displayOrders();
 
-    string path = "C:\\Users\\user\\Desktop\\projectc++\\src\\Sklep-Internetowy\\DataClothing.txt";
+    const string path = "C:\\Users\\user\\Desktop\\projectc++\\src\\Sklep-Internetowy\\DataClothing.txt";
     
-    // FIRST FUNCTION
-    writePurchasesToFile(path, laptop);
-
-
-    // SECOND FUNCTION FUNCTION (PATH OF THE FILE, PRODUCT OBJECT)
+    Vendor vendor("HasCompany", "rtawyau16", "ul.Wislicka", 789456008, "email.a21@awe");
+    vendor.writeProductsToFile(path, laptop);
     cout << "Number of clothes: " << Clothes::clothesCount << endl;
     Clothes newClothe;
-    getDataFromFile(path, newClothe);
+    vendor.getDataFromFile(path, newClothe);
     cout << "Id: " << newClothe.getId() <<endl;
     cout << "Number of clothes: " << Clothes::clothesCount << endl;
 
     auto end = std::chrono::high_resolution_clock::now();
-
     std::chrono::duration<float> duration = (end - start);
-
     cout << "Duration of the program: " << duration.count() << " seconds" << endl;
 
     return 0;

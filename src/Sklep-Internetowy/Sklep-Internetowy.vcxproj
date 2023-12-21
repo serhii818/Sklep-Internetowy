@@ -131,6 +131,7 @@
     <ClInclude Include="Cart.h" />
     <ClInclude Include="Clothes.h" />
     <ClInclude Include="Consumer.h" />
+    <ClInclude Include="Guest.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="Store.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="Cart.cpp" />
     <ClCompile Include="Clothes.cpp" />
     <ClCompile Include="Consumer.cpp" />
+    <ClCompile Include="Guest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Product.cpp" />
