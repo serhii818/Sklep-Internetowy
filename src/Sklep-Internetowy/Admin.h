@@ -8,6 +8,7 @@ class Order;
 class Admin : public User {
 private:
     static vector<Order> orders;
+    static vector<Admin> listaUsers;
     string email;
 
 public:
@@ -15,5 +16,6 @@ public:
     static void addOrder(Order& order);
     static void displayOrders();
     static void sortOrders();
+    static void banUser();
 };
 

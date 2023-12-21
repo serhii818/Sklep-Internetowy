@@ -1,6 +1,6 @@
 #include "Admin.h"
 
-// New exception class
+// exception class
 
 class ProjException : public exception
 {
@@ -20,9 +20,16 @@ private:
 
 
 vector<Order> Admin::orders;
+vector<User> Asmin::listauserow;
+
 void Admin::addOrder(Order& order) 
 {
     Admin::orders.push_back(order);
+}
+
+void Admin::banUser()
+{
+
 }
 
 void Admin::displayOrders() 
