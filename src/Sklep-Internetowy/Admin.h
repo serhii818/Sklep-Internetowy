@@ -8,7 +8,7 @@ class Order;
 class Admin : public User {
 private:
     static vector<Order> orders;
-    static vector<Admin> listaUsers;
+    static vector<User> listaUsers;
     string email;
 
 public:

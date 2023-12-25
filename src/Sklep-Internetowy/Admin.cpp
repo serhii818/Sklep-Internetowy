@@ -20,7 +20,7 @@ private:
 
 
 vector<Order> Admin::orders;
-vector<User> Asmin::listauserow;
+vector<User> Admin::listaUsers;
 
 void Admin::addOrder(Order& order) 
 {

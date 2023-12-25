@@ -6,7 +6,6 @@ Consumer::Consumer(string username, string password, string address, int phone, 
 void Consumer::displayInfo() 
 {
     User::displayInfo();
-    cout << "Username: " << address << endl;
     cout << "Password: " << password << endl;
     cout << "Address: " << address << endl;
     cout << "Phone: " << phone << endl;

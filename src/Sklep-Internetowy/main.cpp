@@ -1,6 +1,7 @@
 #include <iostream>
 #include "User.h"
 #include "Cart.h"
+#include "Guest.h"
 #include "Order.h"
 #include "Store.h"
 #include "Product.h"
