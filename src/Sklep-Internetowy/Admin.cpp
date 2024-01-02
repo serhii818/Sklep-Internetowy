@@ -18,7 +18,7 @@ private:
     int dataInf;
 };
 
-
+// orders and listaUsers better make in main
 vector<Order> Admin::orders;
 vector<User> Admin::listaUsers;
 
