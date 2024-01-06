@@ -39,7 +39,7 @@ public:
     {
         this->data.push_back(object);
     }
-    void delete()
+    void _delete()
     {
         this->data.pop_back();
     }
@@ -64,10 +64,10 @@ public:
 
     }
 
-    void delete()
-    {
+    //void delete()
+    //{
 
-    }
+    //}
 
     void clear()
     {
@@ -103,6 +103,10 @@ int main() {
 
     auto start = std::chrono::high_resolution_clock::now();
 
+    Store store;
+    store.startLoop();
+
+    /*
 	User user("John", "John");
 	user.say();
 	cout << endl;
@@ -140,7 +144,7 @@ int main() {
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<float> duration = (end - start);
     cout << "Duration of the program: " << duration.count() << " seconds" << endl;
-
+    */
    
 
 
