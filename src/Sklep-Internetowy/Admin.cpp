@@ -50,7 +50,7 @@ Admin::Admin(string username, string password, string email)
 void Admin::sortOrders()
 {
     try {
-        int size = orders.size();
+        int size = (int) orders.size();
         if (size == 0)
         {
             throw ProjException("Orders number is too small!", size);
