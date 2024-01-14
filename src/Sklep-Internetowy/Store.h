@@ -14,6 +14,7 @@ class Store
 private:
 	vector<Product*> products;
 	static int productCount;
+
 	User* loggedUser = nullptr;
 	bool programRunning;
 	const vector<string> allCommands{ "quit", "register", "login", "show products", "add to cart",
@@ -35,8 +36,8 @@ public:
 	void startLoop();
 	void receiveCommand();
 
-	void registerUser() { cout << "register" << endl; };
-	void loginUser() { cout << "login" << endl; };
+	bool registerUser();
+	bool loginUser() { return true; };
 	
 
 };

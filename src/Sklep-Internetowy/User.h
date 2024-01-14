@@ -12,14 +12,12 @@ protected:
 	string password;
 
 public:
-	User()
-	{
-
-	}
+	User() = default;
 	virtual void say();
 	virtual ~User() = default;
-	User(string name, string surname);
-	virtual string getUserName() { return this->username; }
+	User(string name, string password);
+	string getUserName() const { return this->username; }
+	string getUserPassword() const { return password; }
 	virtual void displayInfo();
 	static int getTotalUsers();
 	void getDataFromFile(const string& filePath, Clothes& product);

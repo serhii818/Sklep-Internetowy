@@ -1,4 +1,5 @@
 #include "Consumer.h"
+#include<fstream>
 
 Consumer::Consumer(string username, string password, string address, int phone, string email)
     : User(username, password), address(address), phone(phone), email(email) {}
@@ -22,6 +23,31 @@ void Consumer::makePurchase(Cart cart)
     Consumer::creditCard.makePayment();
 }
 
+void Consumer::saveToFile(string path) {
+    try {
+        fstream file;
+        file.exceptions(ifstream::badbit | ifstream::failbit);
+
+        file.open(path, ios_base::app);
+
+        if (!file.is_open())
+        {
+            cout << "Error while trying to open " << path << "while reading" << endl;
+        }
+        else
+        {
+            file << '\n' << getUserName() << " " << getUserPassword() << " " << address << " "
+                << email << " " << phone << " " << creditCard.getCardNumber() << " "
+                << creditCard.getExpirationDate() << " " << creditCard.getCvv();
+        }
+        file.close();
+    }
+    catch (const ifstream::failure& e)
+    {
+        cout << "Error!\n" << e.what() << endl;
+        cout << e.code();
+    }
+}
 
 
 

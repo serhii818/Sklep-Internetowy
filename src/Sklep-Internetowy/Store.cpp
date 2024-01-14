@@ -63,6 +63,21 @@ void Store::receiveCommand() {
         case 3:
             displayProducts(); //? load from file to vector or read from file directly
             break;
+        case 4:
+            //add to cart
+            break;
+        case 5:
+            //make order
+            break;
+        case 6:
+            //log out
+            break;
+        case 7:
+            //ban
+            break;
+        case 8:
+            //sell
+            break;
         default:
             cout << "Command unrecognised" << endl;
             break;
@@ -73,3 +88,40 @@ void Store::receiveCommand() {
     }
 }
 
+bool Store::registerUser() {
+    string name; // check if exists
+    cout << "user name: ";
+    cin >> name;
+    string password; // double check
+    cout << "password: ";
+    cin >> password;
+    string address;
+    cout << "user address: ";
+    cin >> address;
+    string email;
+    cout << "user email: ";
+    cin >> email;
+    int phone;
+    cout << "user phone number: ";
+    cin >> phone;
+    int creditCardNumber;
+    cout << "your credit card number: ";
+    cin >> creditCardNumber;
+    int creditCardExpDate;
+    cout << "your credit card expirational date: ";
+    cin >> creditCardExpDate;
+    int creditCardCvv;
+    cout << "your credit card cvv: ";
+    cin >> creditCardCvv;
+    
+    Consumer* cons = new Consumer(name, password, address, phone, email);
+    cons->setCreditNumber(creditCardNumber);
+    cons->setExpirationDate(creditCardExpDate);
+    cons->setCvv(creditCardCvv);
+
+    loggedUser = cons;
+    availableCommands = &consumerCommands;
+
+    cons->saveToFile("Users.txt");
+    return true;
+}

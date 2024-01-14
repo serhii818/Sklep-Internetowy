@@ -152,7 +152,8 @@
     <ClCompile Include="Vendor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Consumerspurchases.txt" />
+    <Text Include="DataClothing.txt" />
+    <Text Include="Users.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
