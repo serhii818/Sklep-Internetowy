@@ -13,7 +13,7 @@ public:
     Consumer(string username, string password, string address, int phone, string email);
 
     void displayInfo() override;
-    void makePurchase(Cart cart);
+    void makePurchase();
 
     friend class Admin;
 
@@ -27,6 +27,8 @@ public:
         this->creditCard.setCvv(cvv);
     }
     void saveToFile(string path);
+
+    void addProductToCart();
 
     // operator = for class Consumer - Consumer a = Consumer b
     Consumer& operator = (const Consumer &that)
@@ -86,6 +88,7 @@ private:
     string address;
     int phone;
     string email;
+    Cart cart;
     
 };
 

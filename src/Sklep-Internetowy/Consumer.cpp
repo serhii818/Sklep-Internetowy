@@ -15,8 +15,8 @@ void Consumer::displayInfo()
 
 }
 
-void Consumer::makePurchase(Cart cart)
-{
+void Consumer::makePurchase() {
+    // delete selected products from product list in file
     double totalAmount = cart.calculateTotalPrice();
     //Admin::orders.push_back(newOrder);
     cout << "\nMade a purchase for a " + (int)totalAmount << endl;;
@@ -49,12 +49,9 @@ void Consumer::saveToFile(string path) {
     }
 }
 
-
-
-
-
-
-
-
-
-
+void Consumer::addProductToCart() {
+    int productId;
+    cout << "enter product id: ";
+    cin >> productId;
+    cout << productId << endl;
+}
