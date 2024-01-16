@@ -82,6 +82,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Consumerspurchases.txt" />
+    <Text Include="DataClothing.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Users.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>

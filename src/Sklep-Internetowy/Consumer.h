@@ -13,8 +13,10 @@ public:
     Consumer(string username, string password, string address, int phone, string email);
 
     void displayInfo() override;
-    void makePurchase(Cart cart);
+    void makePurchase();
+
     friend class Admin;
+
     void setCreditNumber(int number) {
         Consumer::creditCard.setNumber(number);
     }
@@ -24,6 +26,10 @@ public:
     void setCvv(int cvv) {
         this->creditCard.setCvv(cvv);
     }
+    void saveToFile(string path);
+
+    void addProductToCart();
+
     // operator = for class Consumer - Consumer a = Consumer b
     Consumer& operator = (const Consumer &that)
     {
@@ -74,11 +80,15 @@ private:
         void setCvv(int cvv) {
             this->cvv = cvv;
         }
+        int getCardNumber() { return cardNumber; }
+        int getExpirationDate() { return expirationDate; }
+        int getCvv() { return cvv; }
     };
     CreditCard creditCard;
     string address;
     int phone;
     string email;
+    Cart cart;
     
 };
 
