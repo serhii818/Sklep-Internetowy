@@ -6,7 +6,6 @@ Consumer::Consumer(string username, string password, string address, int phone, 
 
 void Consumer::displayInfo() 
 {
-    User::displayInfo();
     cout << "Username: " << username << endl;
     cout << "Password: " << password << endl;
     cout << "Address: " << address << endl;
@@ -50,8 +49,18 @@ void Consumer::saveToFile(string path) {
 }
 
 void Consumer::addProductToCart() {
-    int productId;
+    int productId;// finish!
     cout << "enter product id: ";
-    cin >> productId;
+    cin >> productId; // search for matching product in file!!
     cout << productId << endl;
+}
+
+void Consumer::displayCart() {
+    cart.displayCart();
+}
+
+std::istream& operator>>(std::istream& is, Consumer& c) {
+    is >> c.username >> c.password >> c.address >> c.email >> c.phone >> c.creditCard.cardNumber >>
+        c.creditCard.expirationDate >> c.creditCard.cvv;
+    return is;
 }
