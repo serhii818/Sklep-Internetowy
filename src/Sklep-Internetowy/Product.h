@@ -14,7 +14,7 @@ private:
 public:
 	Product(string name, double price, double discount = 0.0);
 	Product();
-	virtual void displayInfo() = 0;
+	virtual void displayInfo();
 	double getPrice(); 
 	double getDiscount(); 
 	string getName();

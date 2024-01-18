@@ -1,5 +1,9 @@
 #include "Store.h"
 
+/*
+function for selecting specific word from string
+@param n index of word
+*/
 string selectWord(int n, string str) {
     size_t end_;
     for (int i = 0; i < n-1; i++) {
@@ -63,16 +67,16 @@ void Store::receiveCommand() {
         switch (command)
         {
         case 0:
-            programRunning = false;
+            programRunning = false; // quits main loop
             break;
         case 1:
-            registerUser();
+            registerUser(); // creates new user in file
             break;
         case 2:
-            //loginUser(); // do now
+            if (loggedUser == nullptr) loginUser(); // loads user data to memory and autorise him
             break;
         case 3:
-            displayProducts(); // rewrite
+            displayProducts(); // shows available products for buying
             break;
         case 4:
         {
@@ -81,19 +85,26 @@ void Store::receiveCommand() {
         }
             break;
         case 5:
-            //makeAnOrder();
+            //makeAnOrder(); // buys products added to cart/
             break;
         case 6:
-            logout();
+            logout(); // clears logged user attribute
             break;
         case 7:
             //banUser();
             break;
         case 8:
-            //sellProduct();
+            //sellProduct(); // adds product to products file
             break;
         case 9:
-            //show cart();
+            {
+                Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
+                cons_ptr->displayCart(); // finish
+            }
+            break;
+        case 10:
+            loggedUser->displayInfo();
+            break;
         default:
             cout << "Command unrecognised" << endl;
             break;
@@ -104,6 +115,9 @@ void Store::receiveCommand() {
     }
 }
 
+/*
+adds new consumer to database
+*/
 bool Store::registerUser() {
     bool isExists = false;
     ifstream file("Users.txt");
@@ -136,7 +150,7 @@ bool Store::registerUser() {
         
         if (isExists) continue;
         file.clear();
-        file.seekg(0, ios::beg);
+        file.seekg(0, ios::beg); // start reading file from begging
 
         cout << "user email: ";
         cin >> email;
@@ -151,11 +165,10 @@ bool Store::registerUser() {
 
         if (isExists) continue;
 
- // double check
         cout << "password: ";
         cin >> password;
 
-        cout << "user address: ";
+        cout << "user address (use underscore instead of spaces): ";
         cin >> address;
 
         cout << "user phone number: ";
@@ -184,11 +197,102 @@ bool Store::registerUser() {
     return true;
 }
 
+/*
+logs in existing user from database
+*/
 bool Store::loginUser() {
+    bool wrondData;
+    ifstream file("Users.txt");
+    string line;
+    string email;
+    string password;
+    int lineNumber = 0; // to track which line contains right data
+
+    do {
+        wrondData = true;
+        cout << "Enter your email: " << endl;
+        cin >> email;
+        cout << "Enter the password: " << endl;
+        cin >> password;
+        // search file for user data
+        while (getline(file, line)) {
+            lineNumber++;
+            if (email == selectWord(4, line) and password == selectWord(2, line)) {
+                wrondData = false;
+                cout << "Welcome back " << selectWord(1, line) << '!' << endl;
+                break;
+            }
+        }
+        if (wrondData) {
+            cout << "email or password are wrong" << endl;
+        }
+
+    } while (wrondData);
+
+    if (not wrondData) {
+        Consumer* new_cons = new Consumer();
+        file.clear();
+        file.seekg(0, ios::beg); // start reading file from begging
+
+        for (int i = 0; i < lineNumber-1; i++) { // skips line until reaches correct data
+            getline(file, line);
+        }
+        file >> *new_cons;
+        
+        loggedUser = new_cons;
+        availableCommands = &consumerCommands;
+        return true;
+    }
+    
     return false;
 }
 
+/*
+logs out and deletes previous user object from memory
+*/
 void Store::logout() {
+    delete loggedUser;
     loggedUser = nullptr;
     availableCommands = &guestCommands;
+}
+
+/*
+loads data to product class object from file
+*/
+void Store::getProductFromFile(const string& filePath, Product& product)
+{
+    // Try - Catch
+    try {
+        ifstream fileIn;
+        fileIn.exceptions(ifstream::badbit | ifstream::failbit);
+
+        fileIn.open(filePath);
+
+        if (!fileIn.is_open())
+        {
+            cout << "Error while trying to open " << filePath << "while reading" << endl;
+        }
+        else
+        {
+            cout << "File " << filePath << " opened!" << endl;
+
+            while (fileIn >> product) {
+                cout << product << endl;
+            }
+            if (fileIn.eof()) {
+                cout << "Reached the end of the file." << endl;
+            }
+            //cart2.addItem(&product);
+            //Order newOrder2(&consumer1, cart2);
+            //newOrder2.displayOrderDetails();
+            //Admin::addOrder(newOrder);
+        }
+        fileIn.close();
+    }
+    catch (const ifstream::failure& e)
+    {
+        cout << "Error!\n" << e.what() << endl;
+        cout << e.code();
+    }
+
 }
