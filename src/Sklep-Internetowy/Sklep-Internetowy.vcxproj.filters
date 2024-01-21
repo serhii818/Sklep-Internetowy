@@ -39,10 +39,10 @@
     <ClInclude Include="Vendor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Clothes.h">
+    <ClInclude Include="Guest.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Guest.h">
+    <ClInclude Include="Items.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,15 +74,12 @@
     <ClCompile Include="Vendor.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Clothes.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Guest.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="DataClothing.txt">
+    <Text Include="Products.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
     <Text Include="Users.txt">

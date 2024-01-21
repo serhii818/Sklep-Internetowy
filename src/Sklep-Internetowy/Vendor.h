@@ -1,7 +1,7 @@
 #pragma once
 #include <fstream>
 #include "User.h"
-#include "Clothes.h"
+#include "Product.h"
 
 // class representing companies to buy products from
 
@@ -13,7 +13,7 @@ public:
 
 	}*/
 	Vendor(string username, string password, string address, int phone, string email);
-	void writeProductsToFile(const string& filePath, Clothes& product);
+	void writeProductsToFile(const string& filePath, Product& product);
 
 private:
 	string address;
