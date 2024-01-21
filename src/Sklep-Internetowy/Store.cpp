@@ -17,22 +17,18 @@ string selectWord(int n, string str) {
 
 int Store::productCount = 0;
 
-void Store::addProduct(Product* product) {
-    products.push_back(product);
-    productCount++;
+void Store::addProduct(Product product) {
+    ofstream file("Products.txt", ios_base::app);
+    file << "\n";
+    file << product;
+    file.close();
 }
 
-void Store::displayProducts() {
-    std::cout << "Products in the store:\n";
-    for (Product* product : products) {
-        product->displayInfo();
-    }
-}
 
 int Store::getTotalProducts() {
     return productCount;
 }
-
+//-----------------------------------------------------------------//
 /*
 Starts main loop of the program where commands can be entered by users
 */
@@ -94,7 +90,7 @@ void Store::receiveCommand() {
             //banUser();
             break;
         case 8:
-            //sellProduct(); // adds product to products file
+            sellProduct(); // adds product to products file
             break;
         case 9:
             {
@@ -114,7 +110,7 @@ void Store::receiveCommand() {
         cout << "selected command is unavailable" << endl;
     }
 }
-
+//-----------------------------------------------------------------//
 /*
 adds new consumer to database
 */
@@ -206,10 +202,13 @@ bool Store::loginUser() {
     string line;
     string email;
     string password;
-    int lineNumber = 0; // to track which line contains right data
+    int lineNumber; // to track which line contains right data
 
     do {
         wrondData = true;
+        file.clear();
+        file.seekg(0, ios::beg);
+        lineNumber = 0;
         cout << "Enter your email: " << endl;
         cin >> email;
         cout << "Enter the password: " << endl;
@@ -236,6 +235,7 @@ bool Store::loginUser() {
 
         for (int i = 0; i < lineNumber-1; i++) { // skips line until reaches correct data
             getline(file, line);
+            cout << line << endl;
         }
         file >> *new_cons;
         
@@ -259,12 +259,14 @@ void Store::logout() {
 /*
 loads data to product class object from file
 */
-void Store::getProductFromFile(const string& filePath, Product& product)
+void Store::displayProducts()
 {
     // Try - Catch
     try {
+        Product product;
+        string filePath = "Products.txt";
         ifstream fileIn;
-        fileIn.exceptions(ifstream::badbit | ifstream::failbit);
+        //fileIn.exceptions(ifstream::badbit | ifstream::failbit);
 
         fileIn.open(filePath);
 
@@ -274,13 +276,13 @@ void Store::getProductFromFile(const string& filePath, Product& product)
         }
         else
         {
-            cout << "File " << filePath << " opened!" << endl;
+            cout << "File " << filePath << " opened!\nProducts:" << endl;
 
             while (fileIn >> product) {
                 cout << product << endl;
             }
             if (fileIn.eof()) {
-                cout << "Reached the end of the file." << endl;
+                cout << "\nReached the end of the file." << endl;
             }
             //cart2.addItem(&product);
             //Order newOrder2(&consumer1, cart2);
@@ -295,4 +297,21 @@ void Store::getProductFromFile(const string& filePath, Product& product)
         cout << e.code();
     }
 
+}
+
+void Store::sellProduct() {
+    string name;
+    cout << "Enter your product's name: ";
+    cin >> name;
+    double price;
+    cout << "Enter your product's price: ";
+    cin >> price;
+    double discount;
+    cout << "Enter your product's discount: ";
+    cin >> discount;
+    int amount;
+    cout << "Enter quantity of your product: ";
+    cin >> amount;
+    Product p(name, price, loggedUser->getUserName(), discount, amount);
+    addProduct(p);
 }

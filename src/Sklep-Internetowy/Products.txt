@@ -1,0 +1,4 @@
+a_rubber_ball 15 k 0 250
+fork 2 k 0 1
+jingle_berry 78 k 0 2
+rubber_ross 1000 name 0 1

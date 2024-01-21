@@ -31,9 +31,8 @@ private:
 
 
 public:
-	void addProduct(Product* product);
+	void addProduct(Product product);
 	void displayProducts();
-	void getProductFromFile(const string&, Product&);
 	static int getTotalProducts();
 
 	void startLoop();
@@ -42,6 +41,8 @@ public:
 	bool registerUser();
 	bool loginUser();
 	void logout();
+
+	void sellProduct();
 	
 
 };

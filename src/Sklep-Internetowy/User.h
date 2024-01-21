@@ -2,7 +2,6 @@
 #define USER_H
 
 #include <iostream>
-#include "Clothes.h"
 using namespace std;
 
 class User {
