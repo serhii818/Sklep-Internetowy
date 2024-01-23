@@ -2,26 +2,26 @@
 #include <iostream>
 
 void Cart::addItem(Product* product) {
-    items.push_back(product);
+    items.add(product);
 }
 
 void Cart::displayCart() {
     cout << "Cart Contents:\n";
-    for (Product* item : items) {
-        item->displayInfo();
-    }
+    items.showAll();
 }
 
 double Cart::calculateTotalPrice() {
     double totalPrice = 0.0;
-    for (Product* item : items) {
-        totalPrice += item->getPrice() * (1.0 - item->getDiscount()); 
+    Fifo<Product*> tempFifo = items;
+
+    while (!tempFifo.isEmpty()) {
+        Product* item = tempFifo.front();
+        totalPrice += item->getPrice() * (1.0 - item->getDiscount());
+        tempFifo.remove();
     }
     return totalPrice;
-    
 }
 
-vector<Product*> Cart::getItems()
-{
+Fifo<Product*> Cart::getItems() {
     return items;
 }

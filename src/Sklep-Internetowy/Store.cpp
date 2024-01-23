@@ -82,18 +82,23 @@ void Store::receiveCommand() {
             break;
         case 5:
             //makeAnOrder();
+            loggedUser.
             break;
         case 6:
             logout();
             break;
         case 7:
-            //banUser();
+            std::string username;
+            cin >> username;
+            Admin::banUser(username);
             break;
         case 8:
             //sellProduct();
             break;
         case 9:
+            //loggedUser.
             //show cart();
+
         default:
             cout << "Command unrecognised" << endl;
             break;
@@ -116,40 +121,53 @@ bool Store::registerUser() {
     int creditCardNumber;
     int creditCardExpDate;
     int creditCardCvv;
-    // at beggining isExists variable set to faslse so normaly loop will execute one time
+    // at beggining isExists variable set to false so normaly loop will execute one time
     // but if user enters already existing name or email it will skip curent itteration
     // and start from begging
     do {
         isExists = false;
 
-
         cout << "user name: ";
         cin >> name;
+       
         // checking if entered name already exists
         while (getline(file, line)) {
             if (name == selectWord(1, line)) {
                 isExists = true;
                 cout << "such username already exists, try different name" << endl;
                 break;
+                
             }
         }
+
+        if (isExists) {
+            file.clear();
+            file.seekg(0, ios::beg);
+            continue;
+        }
+
+        bool emailExists = false;
+
+        do  {
+            cout << "user email: ";
+            cin >> email;
+
+            while (getline(file, line)) {
+                if (email == selectWord(5, line)) {
+                    emailExists = true;
+                    cout << "such email already exists, try different email" << endl;
+                    break;
+                }
+            }
+
+            if (emailExists) {
+                file.clear();
+                file.seekg(0, ios::beg);
+                continue;
+            }
         
-        if (isExists) continue;
-        file.clear();
-        file.seekg(0, ios::beg);
-
-        cout << "user email: ";
-        cin >> email;
-        // checking if entered email already exists
-        while (getline(file, line)) {
-            if (email == selectWord(4, line)) {
-                isExists = true;
-                cout << "such email already exists, try different name" << endl;
-                break;
-            }
-        }
-
-        if (isExists) continue;
+        } while (emailExists);
+         
 
  // double check
         cout << "password: ";
@@ -175,9 +193,6 @@ bool Store::registerUser() {
         cons->setExpirationDate(creditCardExpDate);
         cons->setCvv(creditCardCvv);
 
-        loggedUser = cons;
-        availableCommands = &consumerCommands;
-
         cons->saveToFile("Users.txt");
     } while (isExists);
     file.close();
@@ -185,6 +200,48 @@ bool Store::registerUser() {
 }
 
 bool Store::loginUser() {
+
+    string email;
+    string address;
+    int phone;
+    int creditCardNumber;
+    int creditCardExpDate;
+    int creditCardCvv;
+    string name;
+    string password;
+    cout << "user name: ";
+    cin >> name;
+    cout << "password: ";
+    cin >> password;
+    ifstream file("Users.txt");
+    string line;
+    while (getline(file, line)) {
+      
+        if (name == selectWord(1, line) && password == selectWord(2, line)) {
+            
+            email = selectWord(5, line);
+            address = selectWord(3, line);
+            phone = selectWord(4, line);
+            creditCardNumber = selectWord(6, line);
+            creditCardExpDate = selectWord(7, line);
+            creditCardCvv = selectWord(8, line);
+
+            Consumer* cons = new Consumer(name, password, address, phone, email);
+            cons->setCreditNumber(creditCardNumber);
+            cons->setExpirationDate(creditCardExpDate);
+            cons->setCvv(creditCardCvv);
+            loggedUser = cons;
+            availableCommands = &consumerCommands;
+            file.close();
+            return true;
+        }
+    }
+
+    cout << "Invalid username or password" << endl;
+    file.close();
+
+
+
     return false;
 }
 
@@ -192,3 +249,6 @@ void Store::logout() {
     loggedUser = nullptr;
     availableCommands = &guestCommands;
 }
+
+
+

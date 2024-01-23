@@ -7,9 +7,11 @@
 #include "Admin.h"
 
 
+
+
 class Consumer : public User {
 public:
-    Consumer() = default;
+    
     Consumer(string username, string password, string address, int phone, string email);
 
     void displayInfo() override;
@@ -29,6 +31,8 @@ public:
     void saveToFile(string path);
 
     void addProductToCart();
+
+    void showCart();
 
     // operator = for class Consumer - Consumer a = Consumer b
     Consumer& operator = (const Consumer &that)

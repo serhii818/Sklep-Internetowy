@@ -27,8 +27,6 @@ private:
 
 	vector<bool>* availableCommands = &guestCommands;
 
-
-
 public:
 	void addProduct(Product* product);
 	void displayProducts();

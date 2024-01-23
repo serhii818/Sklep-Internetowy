@@ -14,8 +14,8 @@ private:
 public:
     Admin(string username, string password, string email);
     static void addOrder(Order& order);
+    static void banUser(string username);
     static void displayOrders();
     static void sortOrders();
-    static void banUser();
 };
 

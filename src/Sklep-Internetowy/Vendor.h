@@ -8,10 +8,7 @@
 class Vendor : public User
 {
 public:
-	/*Vendor()
-	{
-
-	}*/
+	
 	Vendor(string username, string password, string address, int phone, string email);
 	void writeProductsToFile(const string& filePath, Clothes& product);
 
@@ -19,6 +16,7 @@ private:
 	string address;
 	int phone;
 	string email;
+	
 };
 
 

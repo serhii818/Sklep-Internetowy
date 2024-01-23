@@ -49,9 +49,16 @@ void Consumer::saveToFile(string path) {
     }
 }
 
+
+
 void Consumer::addProductToCart() {
     int productId;
     cout << "enter product id: ";
     cin >> productId;
     cout << productId << endl;
+}
+
+void Consumer::showCart()
+{
+
 }
