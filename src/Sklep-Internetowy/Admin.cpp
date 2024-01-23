@@ -18,7 +18,7 @@ private:
     int dataInf;
 };
 
-// orders and listaUsers better make in main
+
 vector<Order> Admin::orders;
 vector<User> Admin::listaUsers;
 
@@ -27,9 +27,9 @@ void Admin::addOrder(Order& order)
     Admin::orders.push_back(order);
 }
 
-void Admin::banUser()
+void Admin::banUser(string username)
 {
-
+    //open file, delete user
 }
 
 void Admin::displayOrders() 

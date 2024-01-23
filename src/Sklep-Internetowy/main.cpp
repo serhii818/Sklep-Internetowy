@@ -12,7 +12,10 @@
 #include "Vendor.h"
 using namespace std;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
 
 int main() {
 

@@ -81,18 +81,25 @@ void Store::receiveCommand() {
         }
             break;
         case 5:
+            //makeAnOrder();
+            //loggedUser.
+            //break;
             //makeAnOrder(); // buys products added to cart/
             break;
         case 6:
             logout(); // clears logged user attribute
             break;
         case 7:
-            //banUser();
+            std::string username;
+            cin >> username;
+            Admin::banUser(username);
             break;
         case 8:
             sellProduct(); // adds product to products file
             break;
         case 9:
+            //loggedUser.
+            //show cart();
             {
                 Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
                 cons_ptr->displayCart(); // finish
@@ -126,40 +133,53 @@ bool Store::registerUser() {
     int creditCardNumber;
     int creditCardExpDate;
     int creditCardCvv;
-    // at beggining isExists variable set to faslse so normaly loop will execute one time
+    // at beggining isExists variable set to false so normaly loop will execute one time
     // but if user enters already existing name or email it will skip curent itteration
     // and start from begging
     do {
         isExists = false;
 
-
         cout << "user name: ";
         cin >> name;
+       
         // checking if entered name already exists
         while (getline(file, line)) {
             if (name == selectWord(1, line)) {
                 isExists = true;
                 cout << "such username already exists, try different name" << endl;
                 break;
+                
             }
         }
+
+        if (isExists) {
+            file.clear();
+            file.seekg(0, ios::beg);
+            continue;
+        }
+
+        bool emailExists = false;
+
+        do  {
+            cout << "user email: ";
+            cin >> email;
+
+            while (getline(file, line)) {
+                if (email == selectWord(5, line)) {
+                    emailExists = true;
+                    cout << "such email already exists, try different email" << endl;
+                    break;
+                }
+            }
+
+            if (emailExists) {
+                file.clear();
+                file.seekg(0, ios::beg);
+                continue;
+            }
         
-        if (isExists) continue;
-        file.clear();
-        file.seekg(0, ios::beg); // start reading file from begging
 
-        cout << "user email: ";
-        cin >> email;
-        // checking if entered email already exists
-        while (getline(file, line)) {
-            if (email == selectWord(4, line)) {
-                isExists = true;
-                cout << "such email already exists, try different name" << endl;
-                break;
-            }
-        }
-
-        if (isExists) continue;
+        } while (emailExists);
 
         cout << "password: ";
         cin >> password;
@@ -184,9 +204,6 @@ bool Store::registerUser() {
         cons->setExpirationDate(creditCardExpDate);
         cons->setCvv(creditCardCvv);
 
-        loggedUser = cons;
-        availableCommands = &consumerCommands;
-
         cons->saveToFile("Users.txt");
     } while (isExists);
     file.close();
@@ -197,7 +214,10 @@ bool Store::registerUser() {
 logs in existing user from database
 */
 bool Store::loginUser() {
-    bool wrondData;
+
+
+
+    bool wrongData;
     ifstream file("Users.txt");
     string line;
     string email;
@@ -205,7 +225,7 @@ bool Store::loginUser() {
     int lineNumber; // to track which line contains right data
 
     do {
-        wrondData = true;
+        wrongData = true;
         file.clear();
         file.seekg(0, ios::beg);
         lineNumber = 0;
@@ -217,18 +237,18 @@ bool Store::loginUser() {
         while (getline(file, line)) {
             lineNumber++;
             if (email == selectWord(4, line) and password == selectWord(2, line)) {
-                wrondData = false;
+                wrongData = false;
                 cout << "Welcome back " << selectWord(1, line) << '!' << endl;
                 break;
             }
         }
-        if (wrondData) {
+        if (wrongData) {
             cout << "email or password are wrong" << endl;
         }
 
-    } while (wrondData);
+    } while (wrongData);
 
-    if (not wrondData) {
+    if (not wrongData) {
         Consumer* new_cons = new Consumer();
         file.clear();
         file.seekg(0, ios::beg); // start reading file from begging
@@ -244,6 +264,7 @@ bool Store::loginUser() {
         return true;
     }
     
+
     return false;
 }
 

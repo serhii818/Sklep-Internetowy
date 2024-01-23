@@ -1,2 +1,13 @@
-﻿  Store.cpp
-  Sklep-Internetowy.vcxproj -> C:\Users\Admin\source\repos\2\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+﻿  Admin.cpp
+  Cart.cpp
+  Consumer.cpp
+  Guest.cpp
+  main.cpp
+  Order.cpp
+  Product.cpp
+  Store.cpp
+  User.cpp
+  Vendor.cpp
+  Generating Code...
+  LINK : C:\Users\Admin\source\repos\3\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe not found or not built by the last incremental link; performing full link
+  Sklep-Internetowy.vcxproj -> C:\Users\Admin\source\repos\3\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
