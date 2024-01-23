@@ -81,14 +81,11 @@ void Store::receiveCommand() {
         }
             break;
         case 5:
-<<<<<<< HEAD
             //makeAnOrder();
             //loggedUser.
             //break;
-=======
             //makeAnOrder(); // buys products added to cart/
             break;
->>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
         case 6:
             logout(); // clears logged user attribute
             break;
@@ -101,11 +98,8 @@ void Store::receiveCommand() {
             sellProduct(); // adds product to products file
             break;
         case 9:
-<<<<<<< HEAD
             //loggedUser.
             //show cart();
-
-=======
             {
                 Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
                 cons_ptr->displayCart(); // finish
@@ -114,7 +108,6 @@ void Store::receiveCommand() {
         case 10:
             loggedUser->displayInfo();
             break;
->>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
         default:
             cout << "Command unrecognised" << endl;
             break;
@@ -185,27 +178,8 @@ bool Store::registerUser() {
                 continue;
             }
         
-<<<<<<< HEAD
+
         } while (emailExists);
-         
-=======
-        if (isExists) continue;
-        file.clear();
-        file.seekg(0, ios::beg); // start reading file from begging
-
-        cout << "user email: ";
-        cin >> email;
-        // checking if entered email already exists
-        while (getline(file, line)) {
-            if (email == selectWord(4, line)) {
-                isExists = true;
-                cout << "such email already exists, try different name" << endl;
-                break;
-            }
-        }
-
-        if (isExists) continue;
->>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
 
         cout << "password: ";
         cin >> password;
@@ -240,10 +214,10 @@ bool Store::registerUser() {
 logs in existing user from database
 */
 bool Store::loginUser() {
-<<<<<<< HEAD
 
-=======
-    bool wrondData;
+
+
+    bool wrongData;
     ifstream file("Users.txt");
     string line;
     string email;
@@ -251,7 +225,7 @@ bool Store::loginUser() {
     int lineNumber; // to track which line contains right data
 
     do {
-        wrondData = true;
+        wrongData = true;
         file.clear();
         file.seekg(0, ios::beg);
         lineNumber = 0;
@@ -263,18 +237,18 @@ bool Store::loginUser() {
         while (getline(file, line)) {
             lineNumber++;
             if (email == selectWord(4, line) and password == selectWord(2, line)) {
-                wrondData = false;
+                wrongData = false;
                 cout << "Welcome back " << selectWord(1, line) << '!' << endl;
                 break;
             }
         }
-        if (wrondData) {
+        if (wrongData) {
             cout << "email or password are wrong" << endl;
         }
 
-    } while (wrondData);
+    } while (wrongData);
 
-    if (not wrondData) {
+    if (not wrongData) {
         Consumer* new_cons = new Consumer();
         file.clear();
         file.seekg(0, ios::beg); // start reading file from begging
@@ -290,7 +264,7 @@ bool Store::loginUser() {
         return true;
     }
     
->>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
+
     return false;
 }
 
@@ -303,10 +277,6 @@ void Store::logout() {
     availableCommands = &guestCommands;
 }
 
-<<<<<<< HEAD
-
-
-=======
 /*
 loads data to product class object from file
 */
@@ -366,4 +336,3 @@ void Store::sellProduct() {
     Product p(name, price, loggedUser->getUserName(), discount, amount);
     addProduct(p);
 }
->>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
