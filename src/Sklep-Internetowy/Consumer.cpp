@@ -57,12 +57,11 @@ void Consumer::addProductToCart() {
     cout << productId << endl;
 }
 
-<<<<<<< HEAD
+
 void Consumer::showCart()
 {
 
 }
-=======
 void Consumer::displayCart() {
     cart.displayCart();
 }
@@ -72,4 +71,4 @@ std::istream& operator>>(std::istream& is, Consumer& c) {
         c.creditCard.expirationDate >> c.creditCard.cvv;
     return is;
 }
->>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
+

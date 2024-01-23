@@ -11,6 +11,8 @@
 
 class Consumer : public User {
 public:
+
+    
     
     Consumer(string username, string password, string address, int phone, string email);
 
@@ -59,6 +61,7 @@ private:
         int cvv;
 
     public:
+
         // operator = dla CreditCard
         CreditCard& operator = (const CreditCard& that)
         {

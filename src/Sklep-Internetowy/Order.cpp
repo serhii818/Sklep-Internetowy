@@ -5,8 +5,8 @@
 
 Order::Order(Consumer* consumer, Cart cart)
 {
-    for (Product* item : cart.getItems()) {
-        products.push_back(item);
+    for (Product item : cart.getItems()) {
+        items.add(item);
     }
     this->consumer = consumer;
     this->status = OrderStatus::Unknown;
@@ -35,4 +35,31 @@ int Order::getOrderId()
     return this->orderId;
 }
 
+void Order::addItem(Product product) {
+    items.add(product);
+}
+
+void Order::showAll() {
+    cout << "Cart Contents:\n";
+    items.showAll();
+}
+
+
+
+
+double Order::calculateTotalPrice() {
+    double totalPrice = 0.0;
+    Safe<Product> temp = items;
+
+    while (!temp.isEmpty()) {
+        Product item = temp.show();
+        totalPrice += item.getPrice() * (1.0 - item.getDiscount());
+        temp.remove();
+    }
+    return totalPrice;
+}
+
+Safe<Product> Order::getItems() {
+    return items;
+}
 
