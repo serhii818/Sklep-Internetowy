@@ -4,7 +4,7 @@
 Vendor::Vendor(string username, string password, string address, int phone, string email)
 	: User(username, password), address(address), phone(phone), email(email) {}
 
-void Vendor::writeProductsToFile(const string& filePath, Clothes& product)
+void Vendor::writeProductsToFile(const string& filePath, Product& product)
 {
     try {
         ofstream fileOut;

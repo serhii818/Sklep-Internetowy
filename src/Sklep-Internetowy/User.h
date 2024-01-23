@@ -2,7 +2,6 @@
 #define USER_H
 
 #include <iostream>
-#include "Clothes.h"
 using namespace std;
 
 class User {
@@ -18,9 +17,8 @@ public:
 	User(string name, string password);
 	string getUserName() const { return this->username; }
 	string getUserPassword() const { return password; }
-	virtual void displayInfo();
+	virtual void displayInfo() = 0;
 	static int getTotalUsers();
-	void getDataFromFile(const string& filePath, Clothes& product);
 
 
 };

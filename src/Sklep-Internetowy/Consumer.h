@@ -18,6 +18,7 @@ public:
     void makePurchase();
 
     friend class Admin;
+    friend std::istream& operator>>(std::istream& is, Consumer& c);
 
     void setCreditNumber(int number) {
         Consumer::creditCard.setNumber(number);
@@ -31,6 +32,7 @@ public:
     void saveToFile(string path);
 
     void addProductToCart();
+    void displayCart();
 
     void showCart();
 
@@ -87,6 +89,8 @@ private:
         int getCardNumber() { return cardNumber; }
         int getExpirationDate() { return expirationDate; }
         int getCvv() { return cvv; }
+
+        friend std::istream& operator>>(std::istream& is, Consumer& c);
     };
     CreditCard creditCard;
     string address;

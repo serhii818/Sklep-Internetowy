@@ -6,20 +6,23 @@
 #include "Store.h"
 #include "Product.h"
 #include "Consumer.h"
-#include "Clothes.h"
 #include "Admin.h"
 #include <fstream>
 #include <chrono>
 #include "Vendor.h"
-
 using namespace std;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2728e3a038e2dff6dd7eb02a03c4bf8871b1744f
 
 int main() {
 
     auto start = std::chrono::high_resolution_clock::now();
 
     Store store;
+
     store.startLoop();
 
     /*

@@ -1,11 +1,6 @@
-test yuit12314 no test@gamil.com 0 -858993460 -858993460 -858993460
-1 3 4 2 5 6 7 8
-1 test test test 1231412 123 423 1
-2 2 2 2 2 2 2 2
-ok ok ok ok 0 0 0 0
-p 1 1 email 1 1 1 1
-7 7 7 7 7 7 7 7
-3 4 4 4 4 4 4 4
-g 3 3 g 3 3 3 1
-hame jiol773 home hame@gamil.com 0 -858993460 -858993460 -858993460
-hui 452da13 asdf klkl 322 535235 53 55
+l l l l 0 0 0 0
+k k k k 7 7 7 7
+serhii 12345678 as serhii@gmail.com 123456789 12345678 324 234
+name 12345678 adress name 78719823 123 32 3
+o o o o 1 1 1 1
+kk k k k 1 1 1 1

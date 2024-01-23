@@ -3,3 +3,5 @@ D:\docs\Sklep-Internetowy-main\sc\src\Sklep-Internetowy\x64\Debug\Sklep-Internet
 C:\Users\user\Desktop\projectc++\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
 C:\Users\Admin\source\repos\Sklep-Internetowy\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
 C:\Users\Admin\source\repos\1\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+C:\Users\Admin\source\repos\2\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+C:\Users\Admin\source\repos\3\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe

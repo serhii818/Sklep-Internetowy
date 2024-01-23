@@ -129,9 +129,9 @@
   <ItemGroup>
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Cart.h" />
-    <ClInclude Include="Clothes.h" />
     <ClInclude Include="Consumer.h" />
     <ClInclude Include="Guest.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="Store.h" />
@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Cart.cpp" />
-    <ClCompile Include="Clothes.cpp" />
     <ClCompile Include="Consumer.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="main.cpp" />
@@ -152,7 +151,7 @@
     <ClCompile Include="Vendor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="DataClothing.txt" />
+    <Text Include="Products.txt" />
     <Text Include="Users.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
