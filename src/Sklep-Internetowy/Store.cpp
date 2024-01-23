@@ -82,8 +82,8 @@ void Store::receiveCommand() {
             break;
         case 5:
             //makeAnOrder();
-            loggedUser.
-            break;
+            //loggedUser.
+            //break;
         case 6:
             logout();
             break;
@@ -200,47 +200,6 @@ bool Store::registerUser() {
 }
 
 bool Store::loginUser() {
-
-    string email;
-    string address;
-    int phone;
-    int creditCardNumber;
-    int creditCardExpDate;
-    int creditCardCvv;
-    string name;
-    string password;
-    cout << "user name: ";
-    cin >> name;
-    cout << "password: ";
-    cin >> password;
-    ifstream file("Users.txt");
-    string line;
-    while (getline(file, line)) {
-      
-        if (name == selectWord(1, line) && password == selectWord(2, line)) {
-            
-            email = selectWord(5, line);
-            address = selectWord(3, line);
-            phone = selectWord(4, line);
-            creditCardNumber = selectWord(6, line);
-            creditCardExpDate = selectWord(7, line);
-            creditCardCvv = selectWord(8, line);
-
-            Consumer* cons = new Consumer(name, password, address, phone, email);
-            cons->setCreditNumber(creditCardNumber);
-            cons->setExpirationDate(creditCardExpDate);
-            cons->setCvv(creditCardCvv);
-            loggedUser = cons;
-            availableCommands = &consumerCommands;
-            file.close();
-            return true;
-        }
-    }
-
-    cout << "Invalid username or password" << endl;
-    file.close();
-
-
 
     return false;
 }
