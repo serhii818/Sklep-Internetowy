@@ -1,13 +1,7 @@
-﻿  Admin.cpp
-  Cart.cpp
-  Consumer.cpp
-  Guest.cpp
-  main.cpp
-  Order.cpp
-  Product.cpp
-  Store.cpp
-  User.cpp
-  Vendor.cpp
-  Generating Code...
-  LINK : C:\Users\Admin\source\repos\3\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe not found or not built by the last incremental link; performing full link
-  Sklep-Internetowy.vcxproj -> C:\Users\Admin\source\repos\3\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+﻿  Store.cpp
+Vendor.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
+Admin.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
+Consumer.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
+Guest.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
+User.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
+C:\Users\user\Desktop\gitcpp\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

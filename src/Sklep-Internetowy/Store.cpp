@@ -90,23 +90,25 @@ void Store::receiveCommand() {
             logout(); // clears logged user attribute
             break;
         case 7:
-            std::string username;
-            cin >> username;
-            Admin::banUser(username);
+            // CASE 7 PROBLEM WITH CIN
+            //     cin.ignore(numeric_limits<streamsize>::max(), '\n');       
+            //std::string username;
+            //cin >> username;
+
+            //Admin::banUser(username);
             break;
         case 8:
             sellProduct(); // adds product to products file
             break;
         case 9:
-            //loggedUser.
-            //show cart();
+            
             {
                 Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
                 cons_ptr->displayCart(); // finish
             }
             break;
         case 10:
-            loggedUser->displayInfo();
+            //loggedUser->displayInfo();
             break;
         default:
             cout << "Command unrecognised" << endl;
@@ -249,7 +251,7 @@ bool Store::loginUser() {
     } while (wrongData);
 
     if (not wrongData) {
-        Consumer* new_cons = new Consumer();
+        //Consumer* new_cons = new Consumer();
         file.clear();
         file.seekg(0, ios::beg); // start reading file from begging
 
@@ -257,9 +259,9 @@ bool Store::loginUser() {
             getline(file, line);
             cout << line << endl;
         }
-        file >> *new_cons;
+        //file >> *new_cons;
         
-        loggedUser = new_cons;
+        //loggedUser = new_cons;
         availableCommands = &consumerCommands;
         return true;
     }
