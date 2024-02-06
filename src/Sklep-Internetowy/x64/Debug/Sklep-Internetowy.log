@@ -1,7 +1,2 @@
 ﻿  Store.cpp
-Vendor.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
-Admin.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
-Consumer.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
-Guest.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
-User.obj : error LNK2001: неразрешенный внешний символ "public: virtual void __cdecl User::say(void)" (?say@User@@UEAAXXZ).
-C:\Users\user\Desktop\gitcpp\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
+  Sklep-Internetowy.vcxproj -> C:\Users\Admin\source\repos\5\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe

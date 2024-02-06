@@ -29,7 +29,7 @@ void Admin::addOrder(Order& order)
 
 void Admin::banUser(string username)
 {
-    //open file, delete user
+    // TODO
 }
 
 void Admin::displayOrders() 

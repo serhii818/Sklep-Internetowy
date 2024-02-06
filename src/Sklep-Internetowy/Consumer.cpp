@@ -51,10 +51,25 @@ void Consumer::saveToFile(string path) {
 
 
 void Consumer::addProductToCart() {
-    int productId;// finish!
-    cout << "enter product id: ";
-    cin >> productId; // search for matching product in file!!
-    cout << productId << endl;
+    ifstream file("Products.txt");
+    bool exists = false;
+    string productName;
+    cout << "enter product name: ";
+    cin >> productName;
+    Product product;
+    while (file >> product) {
+        cout << product << product.getName() << endl;
+        if (product.getName() == productName) {
+            exists = true;
+            this->cart.addItem(product);
+            break;
+        }
+    }
+    if (file.eof() and not exists) {
+        cout << productName << " dont exists in our store" << endl;
+    }
+
+    cout << productName << endl;
 }
 
 
@@ -63,7 +78,7 @@ void Consumer::showCart()
 
 }
 void Consumer::displayCart() {
-    cart.displayCart();
+    this->cart.displayCart();
 }
 
 std::istream& operator>>(std::istream& is, Consumer& c) {

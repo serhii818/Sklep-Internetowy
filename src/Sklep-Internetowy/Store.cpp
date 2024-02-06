@@ -63,31 +63,29 @@ void Store::receiveCommand() {
         switch (command)
         {
         case 0:
-            programRunning = false; // quits main loop
+            programRunning = false;
             break;
         case 1:
-            registerUser(); // creates new user in file
+            registerUser();
             break;
         case 2:
-            if (loggedUser == nullptr) loginUser(); // loads user data to memory and autorise him
+            if (loggedUser == nullptr) loginUser();
             break;
         case 3:
-            displayProducts(); // shows available products for buying
+            displayProducts();
             break;
         case 4:
         {
             Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
-            cons_ptr->addProductToCart(); // finish
+            cons_ptr->addProductToCart();
         }
             break;
         case 5:
             //makeAnOrder();
-            //loggedUser.
-            //break;
-            //makeAnOrder(); // buys products added to cart/
+            //loggedUser->makeAnOrder();
             break;
         case 6:
-            logout(); // clears logged user attribute
+            logout();
             break;
         case 7:
             // CASE 7 PROBLEM WITH CIN
@@ -98,17 +96,17 @@ void Store::receiveCommand() {
             //Admin::banUser(username);
             break;
         case 8:
-            sellProduct(); // adds product to products file
+            sellProduct();
             break;
         case 9:
             
             {
                 Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
-                cons_ptr->displayCart(); // finish
+                cons_ptr->displayCart();
             }
             break;
         case 10:
-            //loggedUser->displayInfo();
+            loggedUser->displayInfo();
             break;
         default:
             cout << "Command unrecognised" << endl;
@@ -251,7 +249,7 @@ bool Store::loginUser() {
     } while (wrongData);
 
     if (not wrongData) {
-        //Consumer* new_cons = new Consumer();
+        Consumer* new_cons = new Consumer();
         file.clear();
         file.seekg(0, ios::beg); // start reading file from begging
 
@@ -259,9 +257,9 @@ bool Store::loginUser() {
             getline(file, line);
             cout << line << endl;
         }
-        //file >> *new_cons;
+        file >> *new_cons;
         
-        //loggedUser = new_cons;
+        loggedUser = new_cons;
         availableCommands = &consumerCommands;
         return true;
     }

@@ -12,7 +12,7 @@ protected:
 
 public:
 	User() = default;
-	virtual void say();
+	//virtual void say();
 	virtual ~User() = default;
 	User(string name, string password);
 	string getUserName() const { return this->username; }
