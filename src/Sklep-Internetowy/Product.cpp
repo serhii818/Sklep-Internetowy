@@ -7,7 +7,7 @@ Product::Product(std::string name, double price, string seller, double discount,
 Product::Product() : name("None"), price(0.0), discount(0.0), seller("None"), amount(0) {}
 
 void Product::displayInfo() {
-    cout << name << " " << price << " " << discount << "%" << endl;
+    cout << name << " " << price << "$ " << discount << "%" << endl;
 }
 
 double Product::getPrice() {

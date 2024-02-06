@@ -7,8 +7,8 @@ void Cart::addItem(Product product) {
 
 void Cart::displayCart() {
     cout << "Cart Contents:\n";
-    for (const Product& item : items) {
-        cout << item << '\n';
+    for (Product& item : items) {
+        item.displayInfo();
     }
     cout << endl;
 }

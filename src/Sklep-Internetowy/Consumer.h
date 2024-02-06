@@ -34,11 +34,8 @@ public:
         this->creditCard.setCvv(cvv);
     }
     void saveToFile(string path);
-
     void addProductToCart();
     void displayCart();
-
-    void showCart();
 
     // operator = for class Consumer - Consumer a = Consumer b
     Consumer& operator = (const Consumer &that)

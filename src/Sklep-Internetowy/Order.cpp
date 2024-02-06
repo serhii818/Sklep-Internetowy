@@ -1,5 +1,6 @@
 #include "Order.h"
 #include <iostream>
+#include <fstream>
 #include "Consumer.h"
 
 
@@ -23,8 +24,8 @@ void Order::displayOrderDetails() {
     std::cout << "Consumer Information:\n";
     consumer->displayInfo();
     cout << "Products:\n";
-    for (Product* prod : products) {
-        prod->displayInfo();
+    for (Product prod : items.get_vector()) {
+        prod.displayInfo();
     }
     this->status = OrderStatus::Completed;
     cout << "Order completed\n";
@@ -44,9 +45,6 @@ void Order::showAll() {
     items.showAll();
 }
 
-
-
-
 double Order::calculateTotalPrice() {
     double totalPrice = 0.0;
     Safe<Product> temp = items;
@@ -63,3 +61,10 @@ Safe<Product> Order::getItems() {
     return items;
 }
 
+void Order::saveToFile() {
+    ofstream file("Orders.txt");
+
+
+
+    file.close();
+}
