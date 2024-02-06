@@ -16,6 +16,8 @@ public:
     
     Consumer(string username, string password, string address, int phone, string email);
 
+    Consumer() = default;
+
     void displayInfo() override;
     void makePurchase();
 
