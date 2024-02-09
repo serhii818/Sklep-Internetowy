@@ -13,7 +13,6 @@
 class Store
 {
 private:
-	vector<Product*> products;
 	static int productCount;
 
 	User* loggedUser = nullptr;

@@ -15,11 +15,12 @@ void Consumer::displayInfo()
 }
 
 void Consumer::makePurchase() {
-    // delete selected products from product list in file
+    Order new_order{this, cart};
+
     double totalAmount = cart.calculateTotalPrice();
-    //Admin::orders.push_back(newOrder);
-    cout << "\nMade a purchase for a " + (int)totalAmount << endl;;
+    cout << "Made a purchase for a " << totalAmount << '$' << endl;;
     Consumer::creditCard.makePayment();
+
 }
 
 void Consumer::saveToFile(string path) {
@@ -48,8 +49,6 @@ void Consumer::saveToFile(string path) {
     }
 }
 
-
-
 void Consumer::addProductToCart() {
     ifstream file("Products.txt");
     bool exists = false;
@@ -58,7 +57,6 @@ void Consumer::addProductToCart() {
     cin >> productName;
     Product product;
     while (file >> product) {
-        cout << product << product.getName() << endl;
         if (product.getName() == productName) {
             exists = true;
             this->cart.addItem(product);
@@ -69,14 +67,9 @@ void Consumer::addProductToCart() {
         cout << productName << " dont exists in our store" << endl;
     }
 
-    cout << productName << endl;
+    file.close();
 }
 
-
-void Consumer::showCart()
-{
-
-}
 void Consumer::displayCart() {
     this->cart.displayCart();
 }

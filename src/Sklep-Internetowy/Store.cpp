@@ -1,19 +1,5 @@
 #include "Store.h"
-
-/*
-function for selecting specific word from string
-@param n index of word
-*/
-string selectWord(int n, string str) {
-    size_t end_;
-    for (int i = 0; i < n-1; i++) {
-        size_t end_ = str.find(" ");
-        str = str.substr(end_+1, str.length() + end_);
-    }
-    end_ = str.find(" ");
-    str = str.substr(0, end_);
-    return str;
-}
+#include "Tools.h"
 
 int Store::productCount = 0;
 
@@ -81,8 +67,10 @@ void Store::receiveCommand() {
         }
             break;
         case 5:
-            //makeAnOrder();
-            //loggedUser->makeAnOrder();
+        {
+            Consumer* cons_ptr = dynamic_cast<Consumer*>(loggedUser);
+            cons_ptr->makePurchase();
+        }
             break;
         case 6:
             logout();
@@ -255,7 +243,6 @@ bool Store::loginUser() {
 
         for (int i = 0; i < lineNumber-1; i++) { // skips line until reaches correct data
             getline(file, line);
-            cout << line << endl;
         }
         file >> *new_cons;
         
@@ -300,7 +287,7 @@ void Store::displayProducts()
             cout << "File " << filePath << " opened!\nProducts:" << endl;
 
             while (fileIn >> product) {
-                cout << product << endl;
+                product.displayInfo();
             }
             if (fileIn.eof()) {
                 cout << "\nReached the end of the file." << endl;

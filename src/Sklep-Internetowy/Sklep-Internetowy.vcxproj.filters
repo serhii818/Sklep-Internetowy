@@ -45,6 +45,12 @@
     <ClInclude Include="Items.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Safe.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Consumer.cpp">
@@ -77,12 +83,18 @@
     <ClCompile Include="Guest.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Tools.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Products.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
     <Text Include="Users.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Orders.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
   </ItemGroup>
