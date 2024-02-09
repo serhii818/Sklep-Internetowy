@@ -28,7 +28,7 @@ public:
     void addItem(Product product);
     void showAll();
     double calculateTotalPrice();
-    void saveToFile();
+    void saveToFile(string path);
     Safe<Product> getItems();
 
     static int orderCount;

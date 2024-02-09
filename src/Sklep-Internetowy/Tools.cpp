@@ -29,3 +29,18 @@ vector<string> getLines(string path) {
     file.close();
     return lines;
 }
+
+string search(ifstream& file, int index, string value) {
+    string line;
+    bool found = false;
+    while (getline(file, line)) {
+        if (value == selectWord(index, line)) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        return line;
+    }
+    return "";
+}

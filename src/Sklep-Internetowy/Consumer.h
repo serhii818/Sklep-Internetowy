@@ -15,11 +15,11 @@ public:
     
     
     Consumer(string username, string password, string address, int phone, string email);
-
+    Consumer(string data);
     Consumer() = default;
 
     void displayInfo() override;
-    void makePurchase();
+    bool makePurchase();
 
     friend class Admin;
     friend std::istream& operator>>(std::istream& is, Consumer& c);

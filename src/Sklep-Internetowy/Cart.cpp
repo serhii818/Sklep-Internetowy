@@ -6,11 +6,16 @@ void Cart::addItem(Product product) {
 }
 
 void Cart::displayCart() {
-    cout << "Cart Contents:\n";
-    for (Product& item : items) {
-        item.displayInfo();
+    if (empty()) {
+        cout << "Your cart is empty" << endl;
     }
-    cout << endl;
+    else {
+        cout << "Cart Contents:\n";
+        for (Product& item : items) {
+            item.displayInfo();
+        }
+        cout << endl;
+    }
 }
 
 Cart::Cart() : items() {}

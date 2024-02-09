@@ -202,56 +202,35 @@ bool Store::registerUser() {
 logs in existing user from database
 */
 bool Store::loginUser() {
-
-
-
-    bool wrongData;
     ifstream file("Users.txt");
-    string line;
     string email;
     string password;
-    int lineNumber; // to track which line contains right data
-
-    do {
-        wrongData = true;
+    string data;
+  
+    while (true) {
         file.clear();
         file.seekg(0, ios::beg);
-        lineNumber = 0;
-        cout << "Enter your email: " << endl;
+
+        cout << "Enter your email: (enter 0 to go back) " << endl;
         cin >> email;
+        if (email == "0") { break; }
+        data = search(file, 1, email); // returns data with entered email
+
         cout << "Enter the password: " << endl;
         cin >> password;
-        // search file for user data
-        while (getline(file, line)) {
-            lineNumber++;
-            if (email == selectWord(4, line) and password == selectWord(2, line)) {
-                wrongData = false;
-                cout << "Welcome back " << selectWord(1, line) << '!' << endl;
-                break;
-            }
-        }
-        if (wrongData) {
+
+        if ((data == "") or (selectWord(2, data) != password)) {
             cout << "email or password are wrong" << endl;
+            continue;
         }
 
-    } while (wrongData);
-
-    if (not wrongData) {
-        Consumer* new_cons = new Consumer();
-        file.clear();
-        file.seekg(0, ios::beg); // start reading file from begging
-
-        for (int i = 0; i < lineNumber-1; i++) { // skips line until reaches correct data
-            getline(file, line);
-        }
-        file >> *new_cons;
-        
+        Consumer* new_cons = new Consumer{ data };
         loggedUser = new_cons;
         availableCommands = &consumerCommands;
+        cout << "Welcome back " << new_cons->getUserName() << "!" << endl;
         return true;
+        break;
     }
-    
-
     return false;
 }
 
