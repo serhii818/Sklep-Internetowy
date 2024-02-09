@@ -1,7 +1,4 @@
 #include "Consumer.h"
-#include "Tools.h"
-#include<fstream>
-#include<sstream>
 
 Consumer::Consumer(string username, string password, string address, int phone, string email)
     : User(username, password), address(address), phone(phone), email(email) {
@@ -109,9 +106,15 @@ void Consumer::displayCart() {
     this->cart.displayCart();
 }
 
+std::ostream& operator<<(std::ostream& os, const Consumer& c) {
+    os << c.username << " " << c.password << " " << c.address << " " << c.email << " " << c.phone <<
+        " " << c.creditCard.cardNumber << " " <<
+        c.creditCard.expirationDate << " " << c.creditCard.cvv << '\n';
+    return os;
+}
+
 std::istream& operator>>(std::istream& is, Consumer& c) {
     is >> c.username >> c.password >> c.address >> c.email >> c.phone >> c.creditCard.cardNumber >>
         c.creditCard.expirationDate >> c.creditCard.cvv;
     return is;
 }
-

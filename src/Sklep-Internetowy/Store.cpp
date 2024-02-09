@@ -1,7 +1,36 @@
 #include "Store.h"
-#include "Tools.h"
+
 
 int Store::productCount = 0;
+
+Store::Store() {
+    ifstream file("StoreData.txt");
+    string line;
+
+    getline(file, line);
+    Order::orderCount = stoi(line);
+
+    getline(file, line);
+    if (line != "0") {
+        Consumer* new_cons = new Consumer{ line };
+        loggedUser = new_cons;
+        availableCommands = &consumerCommands;
+    }
+    file.close();
+}
+
+Store::~Store() {
+    ofstream file("StoreData.txt", ios::trunc);
+    file << Order::orderCount << '\n';
+
+    if (loggedUser != nullptr) {
+        Consumer* cons = dynamic_cast<Consumer*>(loggedUser);
+        file << *cons;
+    }
+    else {
+        file << "0" << '\n';
+    }
+}
 
 void Store::addProduct(Product product) {
     ofstream file("Products.txt", ios_base::app);
@@ -9,7 +38,6 @@ void Store::addProduct(Product product) {
     file << product;
     file.close();
 }
-
 
 int Store::getTotalProducts() {
     return productCount;
@@ -24,7 +52,6 @@ void Store::startLoop() {
     while (programRunning) {
         receiveCommand();
     }
-
 }
 
 /*

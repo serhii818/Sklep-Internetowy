@@ -9,6 +9,7 @@
 #include "Admin.h"
 #include "Vendor.h"
 #include "Consumer.h"
+#include "Tools.h"
 
 class Store
 {
@@ -28,6 +29,9 @@ private:
 	vector<bool>* availableCommands = &guestCommands;
 
 public:
+	Store();
+	~Store();
+
 	void addProduct(Product product);
 	void displayProducts();
 	static int getTotalProducts();

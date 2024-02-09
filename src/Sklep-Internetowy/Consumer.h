@@ -1,10 +1,15 @@
 #ifndef CONSUMER_H
 #define CONSUMER_H
 
+#include<iostream>
+#include<fstream>
+#include<sstream>
+
 #include "User.h"
 #include "Cart.h"
 #include "Order.h"
 #include "Admin.h"
+#include "Tools.h"
 
 
 
@@ -23,6 +28,7 @@ public:
 
     friend class Admin;
     friend std::istream& operator>>(std::istream& is, Consumer& c);
+    friend std::ostream& operator<<(std::ostream& os, const Consumer& c);
 
     void setCreditNumber(int number) {
         Consumer::creditCard.setNumber(number);
@@ -93,6 +99,7 @@ private:
         int getCvv() { return cvv; }
 
         friend std::istream& operator>>(std::istream& is, Consumer& c);
+        friend std::ostream& operator<<(std::ostream& os, const Consumer& c);
     };
     CreditCard creditCard;
     string address;

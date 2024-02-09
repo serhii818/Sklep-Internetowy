@@ -2,11 +2,16 @@
 #define ORDER_H
 #pragma once
 
+#include <iostream>
+#include <fstream>
 #include <vector>
+
 #include "Product.h"
 #include "Cart.h"
 #include "Consumer.h"
 #include "Safe.h"
+#include "Consumer.h"
+#include "Tools.h"
 
 class Consumer;
 class Product;
@@ -22,7 +27,7 @@ enum class OrderStatus
 class Order {
 public:
     Order(Consumer* consumer, Cart cart);
-
+    Order() = default;
     void displayOrderDetails();
     int getOrderId();
     void addItem(Product product);
@@ -32,6 +37,7 @@ public:
     Safe<Product> getItems();
 
     static int orderCount;
+
 
 protected:
     Consumer* consumer;
