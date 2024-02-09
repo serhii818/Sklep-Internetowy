@@ -12,6 +12,7 @@ public:
     void displayCart();
     Cart();
     double calculateTotalPrice();
+    void clear();
 
     vector<Product>& getItems();
     

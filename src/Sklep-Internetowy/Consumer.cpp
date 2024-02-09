@@ -1,4 +1,5 @@
 #include "Consumer.h"
+#include "Tools.h"
 #include<fstream>
 
 Consumer::Consumer(string username, string password, string address, int phone, string email)
@@ -20,7 +21,28 @@ void Consumer::makePurchase() {
     double totalAmount = cart.calculateTotalPrice();
     cout << "Made a purchase for a " << totalAmount << '$' << endl;;
     Consumer::creditCard.makePayment();
+    new_order.saveToFile();
 
+
+    vector<Product> sold_products = cart.getItems();
+    vector<string> products_data = getLines("Products.txt");
+    ofstream file("Products.txt", ios::trunc);
+
+    for (string line : products_data) {
+        bool sold = false;
+        for (Product p : sold_products) {
+            if (p.getName() == selectWord(1, line)) {
+                sold = true;
+            }
+        }
+
+        if (not sold) {
+            file << line << '\n';
+        }
+        
+    }
+
+    cart.clear();
 }
 
 void Consumer::saveToFile(string path) {

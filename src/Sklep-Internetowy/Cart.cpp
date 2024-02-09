@@ -28,3 +28,7 @@ double Cart::calculateTotalPrice() {
 vector<Product>& Cart::getItems() {
     return items;
 } 
+
+void Cart::clear() {
+    items.clear();
+}

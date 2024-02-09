@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "Consumer.h"
+#include "Tools.h"
 
 
 Order::Order(Consumer* consumer, Cart cart)
@@ -62,9 +63,13 @@ Safe<Product> Order::getItems() {
 }
 
 void Order::saveToFile() {
-    ofstream file("Orders.txt");
+    ofstream file("Orders.txt", ios::app);
 
-
+    file << orderId << " " << (int)status << " " << consumer->getUserName() << " {";
+    for (const Product& p : items.get_vector()) {
+        file << p << ',';
+    }
+    file << "}" << endl;
 
     file.close();
 }
