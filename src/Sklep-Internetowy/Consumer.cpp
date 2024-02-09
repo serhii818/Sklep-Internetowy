@@ -1,9 +1,18 @@
 #include "Consumer.h"
 #include "Tools.h"
 #include<fstream>
+#include<sstream>
 
 Consumer::Consumer(string username, string password, string address, int phone, string email)
-    : User(username, password), address(address), phone(phone), email(email) {}
+    : User(username, password), address(address), phone(phone), email(email) {
+    creditCard = Consumer::CreditCard();
+}
+
+Consumer::Consumer(string data) {
+    istringstream iss(data);
+    iss >> *this;
+    creditCard = Consumer::CreditCard();
+}
 
 void Consumer::displayInfo() 
 {

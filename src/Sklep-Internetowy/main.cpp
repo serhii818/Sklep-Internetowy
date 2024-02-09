@@ -10,6 +10,8 @@
 #include <fstream>
 #include <chrono>
 #include "Vendor.h"
+
+#include<sstream>
 using namespace std;
 
 
@@ -19,7 +21,6 @@ int main() {
 
     Store store;
     store.startLoop();
-   
 
 
     return 0;
