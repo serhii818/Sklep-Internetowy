@@ -19,7 +19,7 @@ public:
     Consumer() = default;
 
     void displayInfo() override;
-    void makePurchase();
+    bool makePurchase();
 
     friend class Admin;
     friend std::istream& operator>>(std::istream& is, Consumer& c);

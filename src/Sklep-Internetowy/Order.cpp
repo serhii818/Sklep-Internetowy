@@ -62,8 +62,8 @@ Safe<Product> Order::getItems() {
     return items;
 }
 
-void Order::saveToFile() {
-    ofstream file("Orders.txt", ios::app);
+void Order::saveToFile(string path) {
+    ofstream file(path, ios::app);
 
     file << orderId << " " << (int)status << " " << consumer->getUserName() << " {";
     for (const Product& p : items.get_vector()) {

@@ -11,7 +11,6 @@ Consumer::Consumer(string username, string password, string address, int phone, 
 Consumer::Consumer(string data) {
     istringstream iss(data);
     iss >> *this;
-    creditCard = Consumer::CreditCard();
 }
 
 void Consumer::displayInfo() 
@@ -24,13 +23,17 @@ void Consumer::displayInfo()
 
 }
 
-void Consumer::makePurchase() {
+bool Consumer::makePurchase() {
+    if ( cart.empty() ) {
+        cout << "Your cart is empty" << endl;
+        return false;
+    }
     Order new_order{this, cart};
 
     double totalAmount = cart.calculateTotalPrice();
     cout << "Made a purchase for a " << totalAmount << '$' << endl;;
     Consumer::creditCard.makePayment();
-    new_order.saveToFile();
+    new_order.saveToFile("Orders.txt");
 
 
     vector<Product> sold_products = cart.getItems();
@@ -52,6 +55,7 @@ void Consumer::makePurchase() {
     }
 
     cart.clear();
+    return true;
 }
 
 void Consumer::saveToFile(string path) {

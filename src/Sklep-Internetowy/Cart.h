@@ -13,7 +13,7 @@ public:
     Cart();
     double calculateTotalPrice();
     void clear();
-
+    bool empty() { return items.empty(); }
     vector<Product>& getItems();
     
 protected:
