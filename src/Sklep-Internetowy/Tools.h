@@ -7,7 +7,7 @@ using namespace std;
 #include<vector>
 
 string selectWord(int n, string str);
-
+vector<string> getLines(string path);
 vector<string> textToVector(string, char);
 
 #endif // !TOOLS_H

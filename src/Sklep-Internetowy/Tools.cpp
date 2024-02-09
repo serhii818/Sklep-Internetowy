@@ -1,4 +1,7 @@
 #include "Tools.h"
+#include<fstream>
+#include<vector>
+#include<string>
 
 string selectWord(int n, string str) {
     size_t end_;
@@ -14,4 +17,15 @@ string selectWord(int n, string str) {
 vector<string> textToVector(string list, char devider) {
     vector<string> v{};
     return v;
+}
+
+vector<string> getLines(string path) {
+    ifstream file(path);
+    vector<string> lines;
+    string line;
+    while (getline(file, line)) {
+        lines.push_back(line);
+    }
+    file.close();
+    return lines;
 }
