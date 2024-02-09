@@ -2,6 +2,10 @@
 #define TOOLS_H
 #pragma once
 
+#include<fstream>
+#include<vector>
+#include<string>
+
 using namespace std;
 #include<iostream>
 #include<vector>

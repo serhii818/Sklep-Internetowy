@@ -1,8 +1,4 @@
 #include "Order.h"
-#include <iostream>
-#include <fstream>
-#include "Consumer.h"
-#include "Tools.h"
 
 
 Order::Order(Consumer* consumer, Cart cart)

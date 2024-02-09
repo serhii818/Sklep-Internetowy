@@ -1,7 +1,4 @@
 #include "Tools.h"
-#include<fstream>
-#include<vector>
-#include<string>
 
 string selectWord(int n, string str) {
     size_t end_;
