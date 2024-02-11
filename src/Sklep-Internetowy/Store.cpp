@@ -329,3 +329,26 @@ void Store::sellProduct() {
     Product p(name, price, loggedUser->getUserName(), discount, amount);
     addProduct(p);
 }
+
+void Store::makeReport(string data)
+{
+    try {
+        string filePath = "report.txt";
+        ofstream fileReport("report.txt", ios::app);
+
+        if (!fileReport.is_open())
+        {
+            cout << "Error while trying to open file." << endl;
+        }
+        else
+        {
+            fileReport << data << endl;
+        }
+        fileReport.close();
+    }
+    catch (const ifstream::failure& e)
+    {
+        cout << "Error!\n" << e.what() << endl;
+        cout << e.code();
+    }
+}
