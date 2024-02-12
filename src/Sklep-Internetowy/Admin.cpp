@@ -29,7 +29,9 @@ void Admin::addOrder(Order& order)
 
 void Admin::banUser(string username)
 {
-    // TODO
+    ofstream file("Banned.txt");
+    file << username << '\n';
+    file.close();
 }
 
 void Admin::displayOrders() 

@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Admins.txt" />
+    <Text Include="Banned.txt" />
     <Text Include="Orders.txt" />
     <Text Include="Products.txt" />
     <Text Include="report.txt" />

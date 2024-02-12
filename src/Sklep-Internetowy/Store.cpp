@@ -103,12 +103,13 @@ void Store::receiveCommand() {
             logout();
             break;
         case 7:
-            // CASE 7 PROBLEM WITH CIN
-            //     cin.ignore(numeric_limits<streamsize>::max(), '\n');       
-            //std::string username;
-            //cin >> username;
-
-            //Admin::banUser(username);
+            {
+            string name;
+            cout << "endter username to ban:";
+            cin >> name;
+            Admin* adm = dynamic_cast<Admin*>(loggedUser);
+            adm->banUser(name);
+            }
             break;
         case 8:
             sellProduct();
@@ -234,10 +235,12 @@ logs in existing user from database
 bool Store::loginUser() {
     ifstream file("Users.txt");
     ifstream adminFile("Admins.txt");
+    ifstream banned("Banned.txt");
     string username;
     string password;
     string data;
     string adminData;
+    string line_b;
 
     Admin* new_adm = nullptr;
   
@@ -254,6 +257,14 @@ bool Store::loginUser() {
 
         cout << "Enter the password: " << endl;
         cin >> password;
+
+        while (getline(banned, line_b)) {
+            if (line_b == username) {
+                cout << "You are banned from using our services" << endl;
+                return false;
+                break;
+            }
+        }
 
         if ((adminData != "") and (selectWord(2, adminData) == password)) {
             new_adm = new Admin{ adminData };

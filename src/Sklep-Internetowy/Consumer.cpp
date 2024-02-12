@@ -70,7 +70,7 @@ void Consumer::saveToFile(string path) {
         {
             file << '\n' << getUserName() << " " << getUserPassword() << " " << address << " "
                 << email << " " << phone << " " << creditCard.getCardNumber() << " "
-                << creditCard.getExpirationDate() << " " << creditCard.getCvv();
+                << creditCard.getExpirationDate() << " " << creditCard.getCvv() << " " << banned;
         }
         file.close();
     }
