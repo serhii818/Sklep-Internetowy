@@ -6,3 +6,4 @@ C:\Users\Admin\source\repos\1\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.
 C:\Users\Admin\source\repos\2\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
 C:\Users\Admin\source\repos\3\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
 C:\Users\Admin\source\repos\5\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe
+C:\Users\Admin\source\repos\6\src\Sklep-Internetowy\x64\Debug\Sklep-Internetowy.exe

@@ -106,6 +106,7 @@ private:
     int phone;
     string email;
     Cart cart;
+    bool banned;
     
 };
 

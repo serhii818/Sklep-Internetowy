@@ -218,8 +218,11 @@ bool Store::registerUser() {
         cons->setCreditNumber(creditCardNumber);
         cons->setExpirationDate(creditCardExpDate);
         cons->setCvv(creditCardCvv);
-
         cons->saveToFile("Users.txt");
+
+        stringstream s;
+        s << "user " << name << " been created";
+        makeReport(s.str());
     } while (isExists);
     file.close();
     return true;
@@ -230,33 +233,52 @@ logs in existing user from database
 */
 bool Store::loginUser() {
     ifstream file("Users.txt");
-    string email;
+    ifstream adminFile("Admins.txt");
+    string username;
     string password;
     string data;
+    string adminData;
+
+    Admin* new_adm = nullptr;
   
     while (true) {
         file.clear();
         file.seekg(0, ios::beg);
 
-        cout << "Enter your email: (enter 0 to go back) " << endl;
-        cin >> email;
-        if (email == "0") { break; }
-        data = search(file, 1, email); // returns data with entered email
+        cout << "Enter your username: (enter 0 to go back) " << endl;
+        cin >> username;
+        if (username == "0") { break; }
+
+        adminData = search(adminFile, 1, username);
+        data = search(file, 1, username);
 
         cout << "Enter the password: " << endl;
         cin >> password;
 
-        if ((data == "") or (selectWord(2, data) != password)) {
-            cout << "email or password are wrong" << endl;
-            continue;
+        if ((adminData != "") and (selectWord(2, adminData) == password)) {
+            new_adm = new Admin{ adminData };
+            loggedUser = new_adm;
+            availableCommands = &adminCommands;
+            cout << "Welcome back " << new_adm->getUserName() << "!\nYou are an administrator" << endl;
+            stringstream s;
+            s << "admin: " << username << " has logged to store";
+            makeReport(s.str());
+            return true;
+            break;
         }
 
-        Consumer* new_cons = new Consumer{ data };
-        loggedUser = new_cons;
-        availableCommands = &consumerCommands;
-        cout << "Welcome back " << new_cons->getUserName() << "!" << endl;
-        return true;
-        break;
+        if ((data != "") and (selectWord(2, data) == password) and (new_adm == nullptr)) {
+            Consumer* new_cons = new Consumer{ data };
+            loggedUser = new_cons;
+            availableCommands = &consumerCommands;
+            cout << "Welcome back " << new_cons->getUserName() << "!" << endl;
+            stringstream s;
+            s << "user: " << username << " has logged to store";
+            makeReport(s.str());
+            return true;
+            break;
+        }
+        cout << "email or password are wrong" << endl;
     }
     return false;
 }
@@ -328,6 +350,9 @@ void Store::sellProduct() {
     cin >> amount;
     Product p(name, price, loggedUser->getUserName(), discount, amount);
     addProduct(p);
+    stringstream s;
+    s << "product: " << name << " has been added to store";
+    makeReport(s.str());
 }
 
 void Store::makeReport(string data)

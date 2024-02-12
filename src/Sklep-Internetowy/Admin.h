@@ -2,6 +2,7 @@
 #include <vector>
 #include "Order.h"
 #include "User.h"
+#include<sstream>
 
 class Order;
 
@@ -13,9 +14,11 @@ private:
 
 public:
     Admin(string username, string password, string email);
+    Admin(string data);
     static void addOrder(Order& order);
     static void banUser(string username);
     static void displayOrders();
     static void sortOrders();
+    void displayInfo() override;
 };
 

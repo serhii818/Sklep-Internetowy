@@ -94,5 +94,11 @@
     <Text Include="StoreData.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="report.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="Admins.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>
