@@ -34,7 +34,6 @@ Store::~Store() {
 
 void Store::addProduct(Product product) {
     ofstream file("Products.txt", ios_base::app);
-    file << "\n";
     file << product;
     file.close();
 }
@@ -105,7 +104,7 @@ void Store::receiveCommand() {
         case 7:
             {
             string name;
-            cout << "endter username to ban:";
+            cout << "Enter username to ban: ";
             cin >> name;
             Admin* adm = dynamic_cast<Admin*>(loggedUser);
             adm->banUser(name);
@@ -125,12 +124,12 @@ void Store::receiveCommand() {
             loggedUser->displayInfo();
             break;
         default:
-            cout << "Command unrecognised" << endl;
+            cout << "\nCommand unrecognised" << endl;
             break;
         }
     }
     else {
-        cout << "selected command is unavailable" << endl;
+        cout << "\nselected command is unavailable" << endl;
     }
 }
 //-----------------------------------------------------------------//
@@ -162,7 +161,7 @@ bool Store::registerUser() {
         while (getline(file, line)) {
             if (name == selectWord(1, line)) {
                 isExists = true;
-                cout << "such username already exists, try different name" << endl;
+                cout << "\nsuch username already exists, try different name" << endl;
                 break;
                 
             }
@@ -183,7 +182,7 @@ bool Store::registerUser() {
             while (getline(file, line)) {
                 if (email == selectWord(5, line)) {
                     emailExists = true;
-                    cout << "such email already exists, try different email" << endl;
+                    cout << "\nsuch email already exists, try different email" << endl;
                     break;
                 }
             }
@@ -197,22 +196,22 @@ bool Store::registerUser() {
 
         } while (emailExists);
 
-        cout << "password: ";
+        cout << "\npassword: ";
         cin >> password;
 
-        cout << "user address (use underscore instead of spaces): ";
+        cout << "\nuser address (use underscore instead of spaces): ";
         cin >> address;
 
-        cout << "user phone number: ";
+        cout << "\nuser phone number: ";
         cin >> phone;
 
-        cout << "your credit card number: ";
+        cout << "\nyour credit card number: ";
         cin >> creditCardNumber;
 
-        cout << "your credit card expirational date: ";
+        cout << "\nyour credit card expirational date: ";
         cin >> creditCardExpDate;
 
-        cout << "your credit card cvv: ";
+        cout << "\nyour credit card cvv: ";
         cin >> creditCardCvv;
 
         Consumer* cons = new Consumer(name, password, address, phone, email);
@@ -229,20 +228,25 @@ bool Store::registerUser() {
     return true;
 }
 
+
+
 /*
 logs in existing user from database
 */
 bool Store::loginUser() {
     ifstream file("Users.txt");
     ifstream adminFile("Admins.txt");
+    ifstream vendorsFile("Vendors.txt");
     ifstream banned("Banned.txt");
     string username;
     string password;
     string data;
+    string vendorData;
     string adminData;
     string line_b;
 
     Admin* new_adm = nullptr;
+    Vendor* new_vend = nullptr;
   
     while (true) {
         file.clear();
@@ -252,6 +256,7 @@ bool Store::loginUser() {
         cin >> username;
         if (username == "0") { break; }
 
+        vendorData = search(vendorsFile, 1, username);
         adminData = search(adminFile, 1, username);
         data = search(file, 1, username);
 
@@ -266,7 +271,19 @@ bool Store::loginUser() {
             }
         }
 
-        if ((adminData != "") and (selectWord(2, adminData) == password)) {
+        if ((vendorData != "") and (selectWord(2, vendorData) == password)) {
+            new_vend = new Vendor{ vendorData };
+            loggedUser = new_vend;
+            availableCommands = &vendorCommands;
+            cout << "Welcome back " << new_vend->getUserName() << "!" << endl;
+            stringstream s;
+            s << "vendor: " << username << " has logged to store";
+            makeReport(s.str());
+            return true;
+            break;
+        }
+
+        if ((adminData != "") and (selectWord(2, adminData) == password) and (new_vend == nullptr)) {
             new_adm = new Admin{ adminData };
             loggedUser = new_adm;
             availableCommands = &adminCommands;
@@ -278,7 +295,7 @@ bool Store::loginUser() {
             break;
         }
 
-        if ((data != "") and (selectWord(2, data) == password) and (new_adm == nullptr)) {
+        if ((data != "") and (selectWord(2, data) == password) and (new_adm == nullptr) and (new_vend == nullptr)) {
             Consumer* new_cons = new Consumer{ data };
             loggedUser = new_cons;
             availableCommands = &consumerCommands;
@@ -323,18 +340,14 @@ void Store::displayProducts()
         }
         else
         {
-            cout << "File " << filePath << " opened!\nProducts:" << endl;
+            cout << "\nProducts:" << endl;
 
             while (fileIn >> product) {
                 product.displayInfo();
             }
             if (fileIn.eof()) {
-                cout << "\nReached the end of the file." << endl;
+                cout << "\nThe Store is empty." << endl;
             }
-            //cart2.addItem(&product);
-            //Order newOrder2(&consumer1, cart2);
-            //newOrder2.displayOrderDetails();
-            //Admin::addOrder(newOrder);
         }
         fileIn.close();
     }

@@ -1,3 +1,4 @@
 1 2 z {a 5 z 0 4,}
 2 2 z {b 7 z 0 9,}
 3 2 z {o 5 z 4 1,}
+4 2 b {magic_wand 800 serhii 0 5,}

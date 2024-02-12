@@ -1,0 +1,2 @@
+vendor1 haslo adresa 11345643 email
+vendor2 65432 unit_12_23 11345643 ven@gmail.com

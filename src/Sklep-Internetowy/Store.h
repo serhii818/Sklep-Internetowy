@@ -22,16 +22,15 @@ private:
 							    "make order", "logout", "ban user", "sell item", "show cart",
 								"show my acount"};
 	vector<bool> guestCommands	 { 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 };
-	vector<bool> consumerCommands{ 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1 };
+	vector<bool> consumerCommands{ 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1 };
 	vector<bool> adminCommands	 { 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1 };
-	//vector<bool> vendorCommands	 { 1, 0, 0, 1, 0, 0, 0, 0, 0, 1 };
-
+	vector<bool> vendorCommands	 { 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0 };
 	vector<bool>* availableCommands = &guestCommands;
 
 public:
 	Store();
 	~Store();
-
+	
 	void addProduct(Product product);
 	void displayProducts();
 	static int getTotalProducts();

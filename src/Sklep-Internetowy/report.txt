@@ -7,3 +7,11 @@ user b been created
 user: b has logged to store
 admin: admin has logged to store
 user: b has logged to store
+user aa been created
+admin: admin has logged to store
+vendor: vendor1 has logged to store
+vendor: vendor1 has logged to store
+vendor: vendor1 has logged to store
+vendor: vendor2 has logged to store
+vendor: vendor2 has logged to store
+product: Coca-Cola has been added to store

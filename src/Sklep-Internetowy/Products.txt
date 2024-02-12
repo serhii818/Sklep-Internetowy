@@ -1,3 +1,1 @@
-
-
-magic_wand 800 serhii 0 5
+Coca-Cola 45.49 vendor2 3 7

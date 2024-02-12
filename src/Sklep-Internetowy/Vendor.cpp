@@ -2,44 +2,32 @@
 
 
 Vendor::Vendor(string username, string password, string address, int phone, string email)
+
 	: User(username, password), address(address), phone(phone), email(email) {}
-
-void Vendor::writeProductsToFile(const string& filePath, Product& product)
+std::istream& operator>>(std::istream& is, Vendor& v)
 {
-    try {
-        ofstream fileOut;
-        fileOut.open(filePath, ofstream::app);
-
-        if (!fileOut.is_open())
-        {
-            cout << "Error while trying to open the file " << filePath << "while writing" << endl;
-        }
-        else
-        {
-            cout << "File " << filePath << " opened!\n";
-            // writing object of the class for example Clothes 
-            fileOut << product << "\n";
-
-        }
-        fileOut.close();
-    }
-    catch (const ofstream::failure& e)
-    {
-        cout << "Error!\n" << e.what() << endl;
-        cout << e.code();
-    }
+    is >> v.username >> v.password >> v.address >> v.email >> v.phone;
+    return is;
 }
 
+std::ostream& operator<<(std::ostream& os, const Vendor& v)
+{
+    os << v.username << " " << v.password << " " << v.address << " " << v.email << " " << v.phone << '\n';
+    return os;
+}
 
+Vendor::Vendor(string data) {
+    istringstream iss(data);
+    iss >> *this;
+}
 
-
-
-
-
-
-
-
-
-
+void Vendor::displayInfo()
+{
+    cout << "\nUsername: " << username << endl;
+    cout << "Password: " << password << endl;
+    cout << "Address: " << address << endl;
+    cout << "Phone: " << phone << endl;
+    cout << "Email: " << email << endl;
+}
 
 

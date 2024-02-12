@@ -159,6 +159,7 @@
     <Text Include="report.txt" />
     <Text Include="StoreData.txt" />
     <Text Include="Users.txt" />
+    <Text Include="Vendors.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
