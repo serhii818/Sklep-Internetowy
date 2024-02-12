@@ -1,7 +1,7 @@
 #include "Consumer.h"
 
 Consumer::Consumer(string username, string password, string address, int phone, string email)
-    : User(username, password), address(address), phone(phone), email(email) {
+    : User(username, password), address(address), phone(phone), email(email), banned(false) {
     creditCard = Consumer::CreditCard();
 }
 
@@ -109,12 +109,12 @@ void Consumer::displayCart() {
 std::ostream& operator<<(std::ostream& os, const Consumer& c) {
     os << c.username << " " << c.password << " " << c.address << " " << c.email << " " << c.phone <<
         " " << c.creditCard.cardNumber << " " <<
-        c.creditCard.expirationDate << " " << c.creditCard.cvv << '\n';
+        c.creditCard.expirationDate << " " << c.creditCard.cvv << " " << c.banned << '\n';
     return os;
 }
 
 std::istream& operator>>(std::istream& is, Consumer& c) {
     is >> c.username >> c.password >> c.address >> c.email >> c.phone >> c.creditCard.cardNumber >>
-        c.creditCard.expirationDate >> c.creditCard.cvv;
+        c.creditCard.expirationDate >> c.creditCard.cvv >> c.banned;
     return is;
 }

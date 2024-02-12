@@ -152,8 +152,10 @@
     <ClCompile Include="Vendor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Admins.txt" />
     <Text Include="Orders.txt" />
     <Text Include="Products.txt" />
+    <Text Include="report.txt" />
     <Text Include="StoreData.txt" />
     <Text Include="Users.txt" />
   </ItemGroup>

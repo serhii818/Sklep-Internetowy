@@ -44,6 +44,11 @@ void Admin::displayOrders()
 Admin::Admin(string username, string password, string email) 
     : User(username, password), email(email) {}
 
+Admin::Admin(string data) {
+    istringstream iss(data);
+    iss >> username >> password >> email;
+}
+
 
 //  bubble sort
 
@@ -86,7 +91,10 @@ void Admin::sortOrders()
     }
 }
 
-
+void Admin::displayInfo() {
+    cout << username << endl;
+    cout << email << endl;
+}
 
 
 

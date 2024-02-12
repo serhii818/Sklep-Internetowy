@@ -1,0 +1,2 @@
+user: serhii has logged to store
+product: magic_wand has been added to store

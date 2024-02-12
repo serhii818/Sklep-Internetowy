@@ -1,7 +1,3 @@
-l l l l 0 0 0 0
-k k k k 7 7 7 7
-serhii 12345678 as serhii@gmail.com 123456789 12345678 324 234
-name 12345678 adress name 78719823 123 32 3
-o o o o 1 1 1 1
-kk k k k 1 1 1 1
-z z z z 1 1 1 1
+
+serhii 12345678 ul.krurzowa_98 serhii@.com 987657123 3214453 12345678 123
+sacza 12345678 il.ll sacz@.ru 123 2 1 1
