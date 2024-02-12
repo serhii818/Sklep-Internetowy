@@ -35,6 +35,7 @@ public:
 	void addProduct(Product product);
 	void displayProducts();
 	static int getTotalProducts();
+	void makeReport(std::string data);
 
 	void startLoop();
 	void receiveCommand();
