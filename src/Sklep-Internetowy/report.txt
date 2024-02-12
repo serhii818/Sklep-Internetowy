@@ -1,2 +1,9 @@
 user: serhii has logged to store
 product: magic_wand has been added to store
+user a been created
+user: a has logged to store
+admin: admin has logged to store
+user b been created
+user: b has logged to store
+admin: admin has logged to store
+user: b has logged to store

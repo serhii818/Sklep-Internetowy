@@ -100,5 +100,8 @@
     <Text Include="Admins.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="Banned.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>
