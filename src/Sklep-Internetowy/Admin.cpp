@@ -36,7 +36,7 @@ void Admin::banUser(string username)
 
 void Admin::displayOrders() 
 {
-    cout << "All Orders:\n";
+    cout << "\nAll Orders:\n";
     for (Order& order : Admin::orders)
     {
         order.displayOrderDetails();
@@ -60,7 +60,7 @@ void Admin::sortOrders()
         int size = (int) orders.size();
         if (size == 0)
         {
-            throw ProjException("Orders number is too small!", size);
+            throw ProjException("\nOrders number is too small!", size);
         }
         for (size_t i = 0; i < size; i++)
         {
@@ -77,19 +77,19 @@ void Admin::sortOrders()
     }
     catch (const std::out_of_range& e)
     {
-        cerr << "Error: " << e.what() << std::endl;
+        cerr << "\nError: " << e.what() << std::endl;
     }
     catch (ProjException& e)
     {
         cout << e.what() << endl;
-        cout << "Data causing troubles: " << e.getDataInfo() << endl;
+        cout << "\nData causing troubles: " << e.getDataInfo() << endl;
     }
     catch (const std::exception& e) {
-        cerr << "Error: " << e.what() << std::endl;
+        cerr << "\nError: " << e.what() << std::endl;
     }
     catch (...)
     {
-        cout << "Something went wrong...\n";
+        cout << "\nSomething went wrong...\n";
     }
 }
 

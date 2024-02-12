@@ -12,7 +12,7 @@ Consumer::Consumer(string data) {
 
 void Consumer::displayInfo() 
 {
-    cout << "Username: " << username << endl;
+    cout << "\nUsername: " << username << endl;
     cout << "Password: " << password << endl;
     cout << "Address: " << address << endl;
     cout << "Phone: " << phone << endl;
@@ -22,13 +22,13 @@ void Consumer::displayInfo()
 
 bool Consumer::makePurchase() {
     if ( cart.empty() ) {
-        cout << "Your cart is empty" << endl;
+        cout << "\nYour cart is empty" << endl;
         return false;
     }
     Order new_order{this, cart};
 
     double totalAmount = cart.calculateTotalPrice();
-    cout << "Made a purchase for a " << totalAmount << '$' << endl;;
+    cout << "\nMade a purchase for a " << totalAmount << '$' << endl;;
     Consumer::creditCard.makePayment();
     new_order.saveToFile("Orders.txt");
 
@@ -64,7 +64,7 @@ void Consumer::saveToFile(string path) {
 
         if (!file.is_open())
         {
-            cout << "Error while trying to open " << path << "while reading" << endl;
+            cout << "\nError while trying to open " << path << "while reading" << endl;
         }
         else
         {
@@ -76,7 +76,7 @@ void Consumer::saveToFile(string path) {
     }
     catch (const ifstream::failure& e)
     {
-        cout << "Error!\n" << e.what() << endl;
+        cout << "\nError!\n" << e.what() << endl;
         cout << e.code();
     }
 }
@@ -85,7 +85,7 @@ void Consumer::addProductToCart() {
     ifstream file("Products.txt");
     bool exists = false;
     string productName;
-    cout << "enter product name: ";
+    cout << "\nenter product name: ";
     cin >> productName;
     Product product;
     while (file >> product) {
@@ -96,7 +96,7 @@ void Consumer::addProductToCart() {
         }
     }
     if (file.eof() and not exists) {
-        cout << productName << " dont exists in our store" << endl;
+        cout << "\n" << productName << " dont exists in our store" << endl;
     }
 
     file.close();
